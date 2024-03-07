@@ -70,7 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="446dp"
+            android:layout_height="467dp"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="30dp">
@@ -88,7 +88,7 @@
 
                 <LinearLayout
                     android:layout_width="341dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="433dp"
                     android:background="@drawable/rounded_corners"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -102,18 +102,19 @@
                         android:layout_marginTop="32dp"
                         android:layout_marginEnd="32dp"
                         android:background="#184A58"
-                        android:gravity="center" />
+                        android:gravity="center"/>
 
                     <LinearLayout
                         android:id="@+id/conditionalLayout"
-                        android:layout_width="92dp"
-                        android:layout_height="99dp"
+                        android:layout_width="281dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <!-- New EditText -->
                         <EditText
-                            android:id="@+id/editTextNewField"
+                            android:id="@+id/editTextNomJeuneFille"
                             android:layout_width="280dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="32dp"
@@ -121,7 +122,7 @@
                             android:layout_marginEnd="32dp"
                             android:background="#184A58"
                             android:gravity="center"
-                            android:hint="New Field"
+                            android:hint="Nom de jeune fille"
                             android:textColorHint="#FFFFFF" />
                     </LinearLayout>
 
