@@ -36,27 +36,7 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les données
         searchViewModel.getData().observe(viewLifecycleOwner, Observer { options ->
             if (options != null && options.isNotEmpty()) {
-                val adapter = object : ArrayAdapter<String>(
-                    requireContext(),
-                    R.layout.my_spinner_style,
-                    options
-                ) {
-                    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                        val v = super.getView(position, convertView, parent)
-                        (v as TextView).textSize = 16.toFloat()
-                        return v
-                    }
-
-                    override fun getDropDownView(
-                        position: Int,
-                        convertView: View?,
-                        parent: ViewGroup
-                    ): View {
-                        val v = super.getDropDownView(position, convertView, parent)
-                        (v as TextView).gravity = Gravity.CENTER
-                        return v
-                    }
-                }
+                val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, options)
                 adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
                 binding.spinnerSexe.adapter = adapter
             } else {
@@ -64,7 +44,6 @@ class SearchFragment : Fragment() {
                 Log.e("SearchFragment", "Options null or empty")
             }
         })
-
 
         binding.spinnerSexe.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(

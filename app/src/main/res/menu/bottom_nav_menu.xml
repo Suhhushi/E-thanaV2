@@ -23,7 +23,6 @@
         android:icon="@drawable/baseline_favorite_border_24"
         android:iconTint="#FFFFFF"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_notifications" />
+        app:itemTextColor="@color/white" />
 
 </menu>
