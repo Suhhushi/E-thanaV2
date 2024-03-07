@@ -104,6 +104,27 @@
                         android:background="#184A58"
                         android:gravity="center" />
 
+                    <LinearLayout
+                        android:id="@+id/conditionalLayout"
+                        android:layout_width="92dp"
+                        android:layout_height="99dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- New EditText -->
+                        <EditText
+                            android:id="@+id/editTextNewField"
+                            android:layout_width="280dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="#184A58"
+                            android:gravity="center"
+                            android:hint="New Field"
+                            android:textColorHint="#FFFFFF" />
+                    </LinearLayout>
+
                     <EditText
                         android:id="@+id/editTextNom"
                         android:layout_width="280dp"

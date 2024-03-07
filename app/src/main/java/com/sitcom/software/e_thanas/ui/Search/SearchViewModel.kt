@@ -5,5 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SearchViewModel : ViewModel() {
+    private val _isFieldVisible = MutableLiveData<Boolean>()
+    val isFieldVisible: LiveData<Boolean> = _isFieldVisible
 
+    fun handleSpinnerSelection(selectedItem: String) {
+        _isFieldVisible.value = selectedItem == "Femme"
+    }
 }
