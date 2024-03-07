@@ -2,7 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/baseline_home_24"
+        android:iconTint="#FFFFFF"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_search"
@@ -17,32 +23,6 @@
         android:icon="@drawable/baseline_favorite_border_24"
         android:iconTint="#FFFFFF"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_favoris" />
-
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/baseline_home_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_home" />
-
-
-    <item
-        android:id="@+id/navigation_cimetieres"
-        android:icon="@drawable/baseline_map_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_cimetieres" />
-
-    <item
-        android:id="@+id/navigation_account"
-        android:icon="@drawable/baseline_account_circle_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_account" />
+        app:itemTextColor="@color/white" />
 
 </menu>
