@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sitcom.software.e_thanas.databinding.FragmentSearchBinding
-
+//lol
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
