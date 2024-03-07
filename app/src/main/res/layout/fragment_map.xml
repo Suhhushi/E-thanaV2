@@ -190,8 +190,7 @@
                     <ImageView
                         android:id="@+id/map_img_scepulture"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@tools:sample/avatars" />
+                        android:layout_height="match_parent" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
