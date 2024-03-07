@@ -19,7 +19,19 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.sitcom.software.e_thanas.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.sitcom.software.e_thanas.ui.favoris.FavorisFragment"
+        android:label="@string/title_favoris"
+        tools:layout="@layout/fragment_favoris" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.sitcom.software.e_thanas.ui.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/navigation_cimetieres"
+        android:name="com.sitcom.software.e_thanas.ui.cimetieres.CimetieresFragment"
+        android:label="@string/title_cimetieres"
+        tools:layout="@layout/fragment_cimetieres" />
 </navigation>

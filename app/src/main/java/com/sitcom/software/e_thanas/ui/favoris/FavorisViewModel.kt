@@ -1,10 +1,10 @@
-package com.sitcom.software.e_thanas.ui.notifications
+package com.sitcom.software.e_thanas.ui.favoris
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class FavorisViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
