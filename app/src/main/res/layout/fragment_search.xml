@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="177dp"
+            android:layout_height="159dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -40,11 +40,10 @@
 
                     <LinearLayout
                         android:layout_width="341dp"
-                        android:layout_height="79dp"
+                        android:layout_height="64dp"
                         android:background="@drawable/rounded_corners"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingBottom="30dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textViewSearch"
@@ -64,13 +63,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="22dp"
                 android:orientation="vertical"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="467dp"
+            android:layout_height="617dp"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="30dp">
@@ -84,93 +83,152 @@
                 <LinearLayout
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical">
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="341dp"
-                    android:layout_height="433dp"
+                    android:layout_height="569dp"
                     android:background="@drawable/rounded_corners"
-                    android:gravity="center"
+                    android:gravity="bottom|center_horizontal"
                     android:orientation="vertical"
                     android:paddingBottom="30dp">
 
-                    <Spinner
-                        android:id="@+id/spinnerSexe"
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="32dp"
-                        android:background="#184A58"
-                        android:gravity="center"/>
+                    <LinearLayout
+                        android:layout_width="297dp"
+                        android:layout_height="39dp"
+                        android:gravity="bottom"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewInformation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Information"
+                            android:textColor="#FFFFFF"
+                            android:textSize="17sp" />
+                    </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/conditionalLayout"
-                        android:layout_width="281dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="visible">
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:orientation="vertical">
 
-                        <!-- New EditText -->
+                        <Spinner
+                            android:id="@+id/spinnerSexe"
+                            android:layout_width="280dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="#184A58"
+                            android:gravity="center" />
+
+                        <LinearLayout
+                            android:id="@+id/conditionalLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <EditText
+                                android:id="@+id/editTextNomJeuneFille"
+                                android:layout_width="280dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="32dp"
+                                android:background="#184A58"
+                                android:hint="Nom de jeune fille"
+                                android:paddingLeft="10dp"
+                                android:textColorHint="#FFFFFF" />
+                        </LinearLayout>
+
                         <EditText
-                            android:id="@+id/editTextNomJeuneFille"
+                            android:id="@+id/editTextNom"
                             android:layout_width="280dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="32dp"
                             android:background="#184A58"
-                            android:gravity="center"
-                            android:hint="Nom de jeune fille"
+                            android:hint="Nom"
+                            android:inputType="text"
+                            android:paddingLeft="10dp"
+                            android:textColor="#FFFFFF"
                             android:textColorHint="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/editTextPrenom"
+                            android:layout_width="280dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="#184A58"
+                            android:hint="Prenom"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="#FFFFFF" />
+
                     </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/editTextNom"
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
-                        android:background="#184A58"
-                        android:gravity="center"
-                        android:hint="Nom"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="#FFFFFF" />
+                    <LinearLayout
+                        android:layout_width="299dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/editTextPrenom"
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
-                        android:background="#184A58"
-                        android:gravity="center"
-                        android:hint="Prenom"
-                        android:textColorHint="#FFFFFF" />
+                        <TextView
+                            android:id="@+id/textViewLocalisation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text="Localisation"
+                            android:textColor="#FFFFFF"
+                            android:textSize="17sp" />
+                    </LinearLayout>
 
-                    <Spinner
-                        android:id="@+id/spinnerRegion"
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
-                        android:background="#184A58"
-                        android:gravity="center" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="135dp"
+                        android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/spinnerVille"
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
-                        android:background="#184A58"
-                        android:gravity="center" />
+                        <Spinner
+                            android:id="@+id/spinnerRegion"
+                            android:layout_width="280dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="#184A58"
+                            android:gravity="center" />
+
+                        <Spinner
+                            android:id="@+id/spinnerVille"
+                            android:layout_width="280dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="#184A58"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="232dp"
+                        android:layout_height="77dp"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
+
+                        <Button
+                            android:id="@+id/btnValider"
+                            android:layout_width="match_parent"
+                            android:layout_height="66dp"
+                            android:text="Valider" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,10 +239,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
