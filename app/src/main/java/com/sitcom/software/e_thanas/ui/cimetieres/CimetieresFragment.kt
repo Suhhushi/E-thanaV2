@@ -1,60 +1,89 @@
 package com.sitcom.software.e_thanas.ui.cimetieres
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.sitcom.software.e_thanas.R
+import org.osmdroid.config.Configuration
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
+import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CimetieresFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CimetieresFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var mMap: MapView
+    private lateinit var mMyLocationOverlay: MyLocationNewOverlay
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cimetieres, container, false)
+        val view = inflater.inflate(R.layout.fragment_cimetieres, container, false)
+
+        mMap = view.findViewById(R.id.osmmap)
+
+        // Initialisation de la configuration d'OSMDroid
+        Configuration.getInstance().load(
+            requireContext(),
+            requireActivity().getSharedPreferences("MyPrefs", 0)
+        )
+
+        // Configuration de la carte
+        mMap.setTileSource(TileSourceFactory.MAPNIK)
+        mMap.setMultiTouchControls(true)
+
+        // Vérifier les autorisations de localisation
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Demander les autorisations de localisation si elles ne sont pas accordées
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                PERMISSION_REQUEST_CODE
+            )
+        } else {
+            // Autorisations de localisation déjà accordées
+            setupMap()
+        }
+
+        return view
+    }
+
+    private fun setupMap() {
+        // Ajouter l'overlay de la localisation de l'utilisateur
+        mMyLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), mMap)
+        mMyLocationOverlay.enableMyLocation()
+        mMyLocationOverlay.enableFollowLocation()
+        mMap.overlays.add(mMyLocationOverlay)
+
+        // Centrer la carte sur la position de l'utilisateur
+        // Zoom sur la position de l'utilisateur lorsque la première position fixée est obtenue
+        mMyLocationOverlay.runOnFirstFix {
+            requireActivity().runOnUiThread {
+                mMap.controller.animateTo(mMyLocationOverlay.myLocation)
+                mMap.controller.setZoom(18.0)
+            }
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CimetieresFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CimetieresFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val PERMISSION_REQUEST_CODE = 1001
     }
 }
+
