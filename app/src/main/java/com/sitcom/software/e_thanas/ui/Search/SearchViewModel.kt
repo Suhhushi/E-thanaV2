@@ -13,4 +13,6 @@ class SearchViewModel : ViewModel() {
         data.value = dataList
         return data
     }
+
+
 }

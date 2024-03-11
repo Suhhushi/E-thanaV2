@@ -29,10 +29,6 @@ class FavorisFragment : Fragment() {
         _binding = FragmentFavorisBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        favorisViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

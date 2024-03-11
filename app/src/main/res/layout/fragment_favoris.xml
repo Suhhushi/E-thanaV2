@@ -4,19 +4,236 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#184A58"
     tools:context=".ui.favoris.FavorisFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="122dp"
+        android:layout_marginBottom="609dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Titre -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Espace gauche -->
+            <LinearLayout
+                android:layout_width="67dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+
+            <!-- Titre central -->
+            <LinearLayout
+                android:layout_width="272dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- Espace au-dessus du titre -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:orientation="vertical"></LinearLayout>
+
+                <!-- Titre -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:background="@drawable/rounded_corners"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/map_txt_cimetiere"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Vos favoris"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Espace en dessous du titre -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:orientation="vertical"></LinearLayout>
+            </LinearLayout>
+
+            <!-- Espace à droite -->
+            <LinearLayout
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Liste des éléments -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="407dp"
+        android:layout_height="556dp"
+        android:layout_marginTop="124dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Espace à gauche -->
+        <LinearLayout
+            android:layout_width="29dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+        <!-- Conteneur des éléments -->
+        <LinearLayout
+            android:layout_width="348dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Premier élément -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:background="@drawable/rounded_corners2"
+                android:orientation="vertical">
+
+                <!-- Contenu de l'élément -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <!-- Image -->
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_heart_broken_24" />
+
+                    <!-- Détails -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/nameTextView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dupont"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/firstNameTextView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Luc"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/locationTextView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cimetière de Croix Daurade"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <!-- Bouton favori -->
+                    <ImageView
+                        android:id="@+id/favoriteImageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/baseline_heart_broken_24" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Espace entre les éléments -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:orientation="vertical"></LinearLayout>
+
+            <!-- Deuxième élément (similaire au premier, à adapter) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:background="@drawable/rounded_corners2"
+                android:orientation="vertical">
+
+                <!-- Contenu de l'élément -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <!-- Image -->
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_heart_broken_24" />
+
+                    <!-- Détails -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/nameTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dupont"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/firstNameTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Luc"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/locationTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cimetière de Croix Daurade"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <!-- Bouton favori -->
+                    <ImageView
+                        android:id="@+id/favoriteImageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/baseline_heart_broken_24" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

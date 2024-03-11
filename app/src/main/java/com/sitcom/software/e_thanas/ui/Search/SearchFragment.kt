@@ -65,10 +65,6 @@ class SearchFragment : Fragment() {
             }
         }
 
-        binding.btnValider.setOnClickListener(){
-
-        }
-
         return root
     }
 
