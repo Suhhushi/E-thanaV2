@@ -23,6 +23,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="341dp"
                 android:layout_height="325dp"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
                 android:src="@drawable/img_logo" />
         </LinearLayout>
 
