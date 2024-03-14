@@ -18,6 +18,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
 class CimetieresFragment : Fragment() {
 
+    //commit
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
     private val centreFrance = GeoPoint(46.777036, 2.450763)
