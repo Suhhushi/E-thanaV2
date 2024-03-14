@@ -29,7 +29,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="665dp"
+                android:layout_height="630dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_corners"
                 android:gravity="center"
@@ -42,13 +42,12 @@
                     android:gravity="center"
                     android:text="MON COMPTE"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="26sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="129dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -58,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="Bienvenue,"
                     android:textColor="@color/white"
-                    android:textSize="26sp" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/lblNomCompte"
@@ -67,7 +66,7 @@
 
                     android:text="MAS Aymeric"
                     android:textColor="@color/white"
-                    android:textSize="28sp" />
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -79,21 +78,16 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/lblStatut"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:baselineAligned="false"
+                        android:paddingTop="15dp"
                         android:text="Statut du compte"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -102,9 +96,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="95dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -304,18 +298,21 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="175dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="174dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="189dp"
+                    android:layout_height="196dp"
                     android:background="@drawable/img_logo"
-                    android:gravity="center"
                     android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout

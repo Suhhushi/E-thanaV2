@@ -29,7 +29,6 @@
         android:title="@string/title_home" />
 
 
-
     <item
         android:id="@+id/navigation_cimetieres"
         android:icon="@drawable/baseline_map_24"
