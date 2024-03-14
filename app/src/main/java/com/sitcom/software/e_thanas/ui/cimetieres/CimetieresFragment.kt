@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.sitcom.software.e_thanas.R
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
@@ -19,6 +20,7 @@ class CimetieresFragment : Fragment() {
 
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
+    private val centreFrance = GeoPoint(46.777036, 2.450763)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,13 +73,15 @@ class CimetieresFragment : Fragment() {
         mMyLocationOverlay.enableMyLocation()
         mMyLocationOverlay.enableFollowLocation()
         mMap.overlays.add(mMyLocationOverlay)
+        mMap.controller.animateTo(centreFrance)
+        mMap.controller.setZoom(6.7)
 
         // Centrer la carte sur la position de l'utilisateur
         // Zoom sur la position de l'utilisateur lorsque la première position fixée est obtenue
         mMyLocationOverlay.runOnFirstFix {
             requireActivity().runOnUiThread {
                 mMap.controller.animateTo(mMyLocationOverlay.myLocation)
-                mMap.controller.setZoom(18.0)
+                mMap.controller.setZoom(16.0)
             }
         }
     }
