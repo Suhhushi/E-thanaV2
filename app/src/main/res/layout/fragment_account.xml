@@ -306,7 +306,9 @@
                     android:layout_width="189dp"
                     android:layout_height="196dp"
                     android:background="@drawable/img_logo"
-                    android:orientation="horizontal"></LinearLayout>
+                    android:orientation="horizontal"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"></LinearLayout>
             </LinearLayout>
 
             <LinearLayout
