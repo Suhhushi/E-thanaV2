@@ -1,19 +1,22 @@
-package com.sitcom.software.e_thanas.ui.Search
+package com.sitcom.software.e_thanas.ui.search
 
 import android.R
+
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.sitcom.software.e_thanas.classes.FormData
 import com.sitcom.software.e_thanas.databinding.FragmentSearchBinding
+
+
 
 class SearchFragment : Fragment() {
 
@@ -30,7 +33,8 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Initialisation de la ViewModel
+
+        // Initialiser la ViewModel
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
 
         // Observer pour surveiller les changements dans les données
@@ -80,8 +84,11 @@ class SearchFragment : Fragment() {
         return root
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+

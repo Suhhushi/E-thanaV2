@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.sitcom.software.e_thanas.ui.Search.SearchFragment"
+        android:name="com.sitcom.software.e_thanas.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
@@ -34,4 +34,10 @@
         android:name="com.sitcom.software.e_thanas.ui.cimetieres.CimetieresFragment"
         android:label="@string/title_cimetieres"
         tools:layout="@layout/fragment_cimetieres" />
+
+    <fragment
+        android:id="@+id/navigation_sepulture"
+        android:name="com.sitcom.software.e_thanas.ui.sepultures.SepultureFragment"
+        android:label="@string/title_sepulture"
+        tools:layout="@layout/fragment_sepulture" />
 </navigation>
