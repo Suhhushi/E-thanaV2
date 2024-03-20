@@ -1,6 +1,7 @@
 package com.sitcom.software.e_thanas.ui.cimetieres
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
@@ -23,6 +25,8 @@ class CimetieresFragment : Fragment() {
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
     private val centreFrance = GeoPoint(46.777036, 2.450763)
     private val cimetiereCroixDaurade = GeoPoint(43.640124, 1.461586)
+    private val cimetiereTerreCabade = GeoPoint(43.608111, 1.462842)
+    private val cimetiereRapas = GeoPoint(43.591679, 1.428226)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,6 +73,9 @@ class CimetieresFragment : Fragment() {
         return view
     }
 
+
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun setupMap() {
         // Ajouter l'overlay de la localisation de l'utilisateur
         mMyLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), mMap)
@@ -76,8 +83,72 @@ class CimetieresFragment : Fragment() {
         mMyLocationOverlay.enableFollowLocation()
         mMap.overlays.add(mMyLocationOverlay)
         mMap.controller.animateTo(centreFrance)
-        mMap.controller.setZoom(6.7)
-        mMap.controller.animateTo(cimetiereCroixDaurade)
+        mMap.controller.setZoom(6.2)
+
+
+
+
+        // Ajouter un marqueur pour le cimetière de Croix Daurade
+        val marker1 = Marker(mMap)
+
+        marker1.position = cimetiereCroixDaurade
+        marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        mMap.overlays.add(marker1)
+        marker1.title = "Cimetière de Croix Daurade"
+        marker1.snippet = "Imp. du Cimetière de Croix Daurade, 31200 Toulouse"
+        marker1.image = resources.getDrawable(R.drawable.img_logo)
+
+        marker1.setOnMarkerClickListener { _, _ ->
+            mMap.controller.animateTo(cimetiereCroixDaurade)
+            mMap.controller.setZoom(13.0)
+            marker1.showInfoWindow()
+            true
+        }
+
+
+        // Ajouter un marqueur pour le cimetière de Terre Cabade
+        val marker2 = Marker(mMap)
+        marker2.position = cimetiereTerreCabade
+        marker2.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        mMap.overlays.add(marker2)
+        marker2.title = "Cimetière de Terre Cabade"
+        marker2.snippet = "Avenue de Terre Cabade, 31100 Toulouse"
+        marker2.image = resources.getDrawable(R.drawable.img_logo)
+
+        marker2.setOnMarkerClickListener { _, _ ->
+            mMap.controller.animateTo(cimetiereTerreCabade)
+            mMap.controller.setZoom(13.0)
+            marker2.showInfoWindow()
+
+            true
+        }
+
+
+
+        // Ajouter un marqueur pour le cimetière de Rapas
+        val marker3 = Marker(mMap)
+        marker3.position = cimetiereRapas
+        marker3.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        mMap.overlays.add(marker3)
+        marker3.title = "Cimetière de Rapas"
+        marker3.snippet = "63 Chem. de la Néboude, 31300 Toulouse"
+        marker3.image = resources.getDrawable(R.drawable.img_logo)
+
+        marker3.setOnMarkerClickListener { _, _ ->
+            mMap.controller.animateTo(cimetiereRapas)
+            mMap.controller.setZoom(13.0)
+            marker3.showInfoWindow()
+
+            true
+        }
+
+
+
+
+
+
+
+
 
 
         // Centrer la carte sur la position de l'utilisateur
@@ -85,7 +156,7 @@ class CimetieresFragment : Fragment() {
         mMyLocationOverlay.runOnFirstFix {
             requireActivity().runOnUiThread {
                 mMap.controller.animateTo(mMyLocationOverlay.myLocation)
-                mMap.controller.setZoom(16.0)
+
 
             }
         }
