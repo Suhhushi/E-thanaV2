@@ -22,6 +22,7 @@ class CimetieresFragment : Fragment() {
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
     private val centreFrance = GeoPoint(46.777036, 2.450763)
+    private val cimetiereCroixDaurade = GeoPoint(43.640124, 1.461586)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,6 +77,8 @@ class CimetieresFragment : Fragment() {
         mMap.overlays.add(mMyLocationOverlay)
         mMap.controller.animateTo(centreFrance)
         mMap.controller.setZoom(6.7)
+        mMap.controller.animateTo(cimetiereCroixDaurade)
+
 
         // Centrer la carte sur la position de l'utilisateur
         // Zoom sur la position de l'utilisateur lorsque la première position fixée est obtenue
@@ -83,6 +86,7 @@ class CimetieresFragment : Fragment() {
             requireActivity().runOnUiThread {
                 mMap.controller.animateTo(mMyLocationOverlay.myLocation)
                 mMap.controller.setZoom(16.0)
+
             }
         }
     }

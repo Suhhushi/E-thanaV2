@@ -22,14 +22,10 @@
             android:orientation="horizontal">
 
             <!-- Espace gauche -->
-            <LinearLayout
-                android:layout_width="67dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
 
             <!-- Titre central -->
             <LinearLayout
-                android:layout_width="272dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -64,10 +60,6 @@
             </LinearLayout>
 
             <!-- Espace à droite -->
-            <LinearLayout
-                android:layout_width="72dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

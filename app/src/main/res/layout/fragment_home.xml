@@ -23,9 +23,18 @@
                 android:id="@+id/imageView"
                 android:layout_width="341dp"
                 android:layout_height="325dp"
-                android:scaleX="0.8"
-                android:scaleY="0.8"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
                 android:src="@drawable/img_logo" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Localiser la sépulture d'un défunt "
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
         </LinearLayout>
 
         <LinearLayout

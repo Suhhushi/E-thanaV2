@@ -10,86 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#184A58"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="77dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="33dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="341dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/rounded_corners"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewSearch"
-                            android:layout_width="274dp"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Veuillez remplir les champs suivant pour pouvoir localiser une sépulture"
-                            android:textColor="#FFFFFF" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textViewSearch"
+                android:layout_width="274dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:gravity="center"
+                android:text="Veuillez remplir les champs suivant pour pouvoir localiser une sépulture"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="617dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="30dp">
+            android:paddingBottom="50dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="33dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="341dp"
-                    android:layout_height="569dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corners"
                     android:gravity="bottom|center_horizontal"
                     android:orientation="vertical"
@@ -98,13 +54,14 @@
                     <LinearLayout
                         android:layout_width="292dp"
                         android:layout_height="40dp"
-                        android:gravity="bottom"
+                        android:gravity="bottom|center"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textViewInformation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="Information"
                             android:textColor="#FFFFFF"
                             android:textSize="17sp" />
@@ -113,6 +70,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="269dp"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <Spinner
@@ -177,7 +135,7 @@
                     <LinearLayout
                         android:layout_width="299dp"
                         android:layout_height="wrap_content"
-                        android:gravity="bottom"
+                        android:gravity="bottom|center"
                         android:orientation="vertical">
 
                         <TextView
@@ -193,6 +151,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="146dp"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <Spinner
@@ -231,10 +190,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

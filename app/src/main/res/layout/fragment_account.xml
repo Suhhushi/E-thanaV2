@@ -12,12 +12,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="35dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="343dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -55,6 +50,7 @@
                     android:id="@+id/lblBienvenue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="Bienvenue,"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -64,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
+                    android:gravity="center"
                     android:text="MAS Aymeric"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -317,9 +314,5 @@
                 android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="35dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 </FrameLayout>
