@@ -1,12 +1,14 @@
 package com.sitcom.software.e_thanas
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.sitcom.software.e_thanas.databinding.ActivityMainBinding
+import com.sitcom.software.e_thanas.outils.Serializer
 
 class MainActivity : AppCompatActivity() {
 

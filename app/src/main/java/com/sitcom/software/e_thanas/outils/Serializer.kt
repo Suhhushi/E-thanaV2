@@ -1,84 +1,65 @@
 package com.sitcom.software.e_thanas.outils
 
 import android.content.Context
-import java.io.FileNotFoundException
+import android.content.res.XmlResourceParser
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
 
-abstract class Serializer (){
-
-
+abstract class Serializer {
 
     companion object leSerialiser {
+
         /**
-         * @param filename : fichier d'enregistrment du client en binaire
-         * @param object   objet à sérialiser (ici le client)
-         * @param context  context de l'application
+         * @param filename : nom du fichier XML à lire
+         * @param context : contexte de l'application
+         * @return : XmlPullParser pour le fichier XML donné
          */
-
-        fun serialize(filename: String?, `object`: Any?, context: Context) {
-
+        fun getXmlPullParser(filename: String, context: Context): XmlPullParser? {
             try {
-                //ouverture du fichier en écriture
-                val file = context.openFileOutput(filename, Context.MODE_PRIVATE)
-                //déclaration d'un flux d'écriture
-                val oos: ObjectOutputStream
-                try {
-                    //ouverture du flux d'écriture vers le fichier
-                    oos = ObjectOutputStream(file)
-                    //écriture de l'objet dans le fichier
-                    oos.writeObject(`object`)
-                    //enregistrement
-                    oos.flush()
-                    //fermeture du flux
-                    oos.close()
-                } catch (e: IOException) {
-                    //erreur de sérialisation
-                    e.printStackTrace()
+                // Récupère l'identifiant du fichier XML à partir de son nom
+                val resourceId = context.resources.getIdentifier(filename, "xml", context.packageName)
+                if (resourceId == 0) {
+                    // Si le fichier n'existe pas
+                    return null
                 }
-            } catch (e: FileNotFoundException) {
-                //fichier non trouvé
+                // Obtient le parser XML à partir du fichier XML
+                return context.resources.getXml(resourceId)
+            } catch (e: XmlPullParserException) {
                 e.printStackTrace()
             } catch (e: IOException) {
-                //autres exceptions
                 e.printStackTrace()
             }
-
+            return null
         }
-
 
         /**
-         *
-         * @param filename : fichier d'enregistrment du client en binaire
-         * @param context context de l'application
+         * @param filename : nom du fichier XML à lire
+         * @param context : contexte de l'application
+         * @return : données lues à partir du fichier XML
          */
-       fun deSerialize(filename: String?, context: Context): Any? {
-//déclaration de l'objet retour et initialisation
-            var `object`: Any? = null
+        fun readXml(filename: String, context: Context) {
+            val parser = getXmlPullParser(filename, context)
             try {
-                //ouverture du fichier en lecture
-                val file = context.openFileInput(filename)
-                val ois: ObjectInputStream
-                try {
-                    //ouverture du flux de lecture vers le fichier
-                    ois = ObjectInputStream(file)
-                    //lecture de l'objet serialisé
-                    `object` = ois.readObject()
-                    //fermeture du flux
-                    ois.close()
-                    //gestion des exceptions
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                } catch (e: ClassNotFoundException) {
-                    e.printStackTrace()
+                while (parser?.eventType != XmlPullParser.END_DOCUMENT) {
+                    when (parser?.eventType) {
+                        XmlPullParser.START_TAG -> {
+                            val tagName = parser.name
+                            // Ici, vous pouvez traiter les balises selon vos besoins
+                            // Par exemple :
+                            // if (tagName == "item") {
+                            //     val value = parser.getAttributeValue(null, "attribut_name")
+                            //     // Faites quelque chose avec la valeur
+                            // }
+                        }
+                    }
+                    parser?.next()
                 }
-            } catch (e: FileNotFoundException) {
+            } catch (e: XmlPullParserException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
                 e.printStackTrace()
             }
-            return `object`
         }
-
-
     }
 }

@@ -1,47 +1,61 @@
 package com.sitcom.software.e_thanas.donnees
 
-import java.sql.DriverManager
-import com.sitcom.software.e_thanas.outils.Serializer
+import android.content.Context
 import com.sitcom.software.e_thanas.classes.Cimetiere
+import com.sitcom.software.e_thanas.outils.Serializer
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
+import java.io.IOException
 
+class CimetiereRepository(private val context: Context) {
 
-
-abstract class CimetiereRepository(){
-
-    fun main() {
-        val url = "jdbc:mysql://localhost:8888/bd_ethana"
-        val username = "root"
-        val password = ""
+    fun getCimetieres(): List<Cimetiere> {
+        val parser = Serializer.getXmlPullParser("bd_ethana", context)
+        val cimetieres = mutableListOf<Cimetiere>()
 
         try {
-            // Establish a connection to the database
-            val connection = DriverManager.getConnection(url, username, password)
+            var idCimetiere = 0
+            var nomCimetiere = ""
+            var rue = ""
+            var ville = ""
+            var cp = 0
 
-            // Create a statement
-            val statement = connection.createStatement()
-
-            // Execute a query
-            val query = "SELECT * FROM cimetieres"
-            val resultSet = statement.executeQuery(query)
-
-            // Process the result set
-            while (resultSet.next()) {
-                val idCimetiere = resultSet.getInt("idCimetiere")
-                val nomCimetiere = resultSet.getString("nomCimetiere")
-                val rue = resultSet.getInt("rue")
-                val ville = resultSet.getString("ville")
-                val cp = resultSet.getString("cp")
-
-                // Do something with the retrieved data
-                println("ID: $idCimetiere, Nom: $nomCimetiere, Rue: $rue, Ville: $ville, CP: $cp")
+            while (parser?.eventType != XmlPullParser.END_DOCUMENT) {
+                when (parser?.eventType) {
+                    XmlPullParser.START_TAG -> {
+                        val tagName = parser.name
+                        if (tagName == "table" && parser.getAttributeValue(null, "name") == "cimetieres") {
+                            idCimetiere = 0
+                            nomCimetiere = ""
+                            rue = ""
+                            ville = ""
+                            cp = 0
+                        } else if (tagName == "column") {
+                            val columnName = parser.getAttributeValue(null, "name")
+                            val columnValue = parser.nextText()
+                            when (columnName) {
+                                "idCimetiere" -> idCimetiere = columnValue.toInt()
+                                "nomCimetiere" -> nomCimetiere = columnValue
+                                "rue" -> rue = columnValue
+                                "ville" -> ville = columnValue
+                                "cp" -> cp = columnValue.toInt()
+                            }
+                        }
+                    }
+                    XmlPullParser.END_TAG -> {
+                        if (parser.name == "table" && parser.getAttributeValue(null, "name") == "cimetieres") {
+                            cimetieres.add(Cimetiere(idCimetiere, nomCimetiere, rue, ville, cp))
+                        }
+                    }
+                }
+                parser?.next()
             }
-
-            // Close the resources
-            resultSet.close()
-            statement.close()
-            connection.close()
-        } catch (e: Exception) {
+        } catch (e: XmlPullParserException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
             e.printStackTrace()
         }
+
+        return cimetieres
     }
 }
