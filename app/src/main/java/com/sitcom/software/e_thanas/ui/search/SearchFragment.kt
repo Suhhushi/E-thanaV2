@@ -29,9 +29,56 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
+
+
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+
+
+
+
+
+
+
+
+
+        binding.btnRechercher.setOnClickListener {
+            // Récupérer les informations du formulaire
+            val sexe = binding.spinnerSexe.selectedItem.toString()
+            val nom = binding.editTextNom.text.toString()
+            val nomJF = binding.editTextNomJeuneFille.text.toString()
+            val prenom = binding.editTextPrenom.text.toString()
+            val ville = binding.spinnerVille.selectedItem.toString()
+            val cimetiere = binding.spinnerCimetiere.selectedItem.toString()
+
+            // Créer un Bundle pour transmettre les informations au fragment cible
+            val bundle = Bundle().apply {
+                putString("sexe", sexe)
+                putString("nom", nom)
+                putString("nomJF", nomJF)
+                putString("prenom", prenom)
+                putString("ville", ville)
+                putString("cimetiere", cimetiere)
+            }
+
+            val navController = findNavController()
+
+            // Naviguer vers le fragment de recherche
+            navController.navigate(com.sitcom.software.e_thanas.R.id.navigation_sepulture, bundle)
+        }
+
+
+
+
+
+
+
+
+
 
 
         // Initialiser la ViewModel
