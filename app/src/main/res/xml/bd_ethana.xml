@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Hôte : 127.0.0.1:3306
-- Généré le : mer. 20 mars 2024 à 09:09
+- Généré le : mer. 20 mars 2024 à 12:20
 - Version du serveur : 8.0.31
 - Version de PHP : 8.0.26
 -->
@@ -24,6 +24,41 @@
                   `ville` varchar(50) DEFAULT NULL,
                   `cp` int DEFAULT NULL,
                   PRIMARY KEY (`idCimetiere`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+            </pma:table>
+            <pma:table name="defunts">
+                CREATE TABLE `defunts` (
+                  `idDefunt` int NOT NULL,
+                  `nom` varchar(50) DEFAULT NULL,
+                  `nomJeuneFille` varchar(50) DEFAULT NULL,
+                  `prenom` varchar(50) DEFAULT NULL,
+                  `dateNaiss` date DEFAULT NULL,
+                  `dateDeces` date DEFAULT NULL,
+                  `idSepulture` int NOT NULL,
+                  PRIMARY KEY (`idDefunt`),
+                  KEY `idSepulture` (`idSepulture`),
+                  CONSTRAINT `defunts_ibfk_1` FOREIGN KEY (`idSepulture`) REFERENCES `sepultures` (`idSepulture`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+            </pma:table>
+            <pma:table name="sepultures">
+                CREATE TABLE `sepultures` (
+                  `idSepulture` int NOT NULL,
+                  `coordX` varchar(20) DEFAULT NULL,
+                  `coordY` varchar(20) DEFAULT NULL,
+                  `idType` int NOT NULL,
+                  `idCimetiere` int DEFAULT NULL,
+                  PRIMARY KEY (`idSepulture`),
+                  KEY `idType` (`idType`),
+                  KEY `idCimetiere` (`idCimetiere`),
+                  CONSTRAINT `sepultures_ibfk_1` FOREIGN KEY (`idType`) REFERENCES `typesepulture` (`idType`),
+                  CONSTRAINT `sepultures_ibfk_2` FOREIGN KEY (`idCimetiere`) REFERENCES `cimetieres` (`idCimetiere`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+            </pma:table>
+            <pma:table name="typesepulture">
+                CREATE TABLE `typesepulture` (
+                  `idType` int NOT NULL,
+                  `libelle` varchar(50) DEFAULT NULL,
+                  PRIMARY KEY (`idType`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
             </pma:table>
         </pma:database>
@@ -54,6 +89,118 @@
             <column name="rue">1 Avenue du Cimetière</column>
             <column name="ville">Toulouse</column>
             <column name="cp">31500</column>
+        </table>
+        <!-- Table defunts -->
+        <table name="defunts">
+            <column name="idDefunt">1</column>
+            <column name="nom">BONNET</column>
+            <column name="nomJeuneFille">MOREL</column>
+            <column name="prenom">Marie</column>
+            <column name="dateNaiss">1955-03-25</column>
+            <column name="dateDeces">2016-07-20</column>
+            <column name="idSepulture">1</column>
+        </table>
+        <table name="defunts">
+            <column name="idDefunt">2</column>
+            <column name="nom">DUPONT</column>
+            <column name="nomJeuneFille">FONTAINE</column>
+            <column name="prenom">Nathalie</column>
+            <column name="dateNaiss">1947-03-21</column>
+            <column name="dateDeces">1997-09-12</column>
+            <column name="idSepulture">2</column>
+        </table>
+        <table name="defunts">
+            <column name="idDefunt">3</column>
+            <column name="nom">DUPONT</column>
+            <column name="nomJeuneFille">NULL</column>
+            <column name="prenom">Marc</column>
+            <column name="dateNaiss">1945-11-19</column>
+            <column name="dateDeces">2006-08-11</column>
+            <column name="idSepulture">2</column>
+        </table>
+        <table name="defunts">
+            <column name="idDefunt">4</column>
+            <column name="nom">LEROY</column>
+            <column name="nomJeuneFille">NULL</column>
+            <column name="prenom">Jean</column>
+            <column name="dateNaiss">1960-04-12</column>
+            <column name="dateDeces">2013-01-08</column>
+            <column name="idSepulture">5</column>
+        </table>
+        <table name="defunts">
+            <column name="idDefunt">6</column>
+            <column name="nom">MERCIER</column>
+            <column name="nomJeuneFille">NULL</column>
+            <column name="prenom">Michel</column>
+            <column name="dateNaiss">1990-02-17</column>
+            <column name="dateDeces">2023-09-03</column>
+            <column name="idSepulture">3</column>
+        </table>
+        <table name="defunts">
+            <column name="idDefunt">7</column>
+            <column name="nom">GARCIA</column>
+            <column name="nomJeuneFille">CHEVALIER</column>
+            <column name="prenom">Catherine</column>
+            <column name="dateNaiss">1951-06-12</column>
+            <column name="dateDeces">2019-05-24</column>
+            <column name="idSepulture">4</column>
+        </table>
+        <!-- Table sepultures -->
+        <table name="sepultures">
+            <column name="idSepulture">1</column>
+            <column name="coordX">43°38'27.0&quot;N</column>
+            <column name="coordY">1°27'38.4&quot;E</column>
+            <column name="idType">1</column>
+            <column name="idCimetiere">1</column>
+        </table>
+        <table name="sepultures">
+            <column name="idSepulture">2</column>
+            <column name="coordX">43°38'26.9&quot;N</column>
+            <column name="coordY">1°27'38.2&quot;E</column>
+            <column name="idType">4</column>
+            <column name="idCimetiere">1</column>
+        </table>
+        <table name="sepultures">
+            <column name="idSepulture">3</column>
+            <column name="coordX">43°38'21.8&quot;N</column>
+            <column name="coordY">1°27'48.9&quot;E</column>
+            <column name="idType">4</column>
+            <column name="idCimetiere">1</column>
+        </table>
+        <table name="sepultures">
+            <column name="idSepulture">4</column>
+            <column name="coordX">43°36'25.8&quot;N</column>
+            <column name="coordY">1°27'39.5&quot;E</column>
+            <column name="idType">4</column>
+            <column name="idCimetiere">3</column>
+        </table>
+        <table name="sepultures">
+            <column name="idSepulture">5</column>
+            <column name="coordX">43°35'25.8&quot;N</column>
+            <column name="coordY">1°25'38.8&quot;E</column>
+            <column name="idType">1</column>
+            <column name="idCimetiere">2</column>
+        </table>
+        <!-- Table typesepulture -->
+        <table name="typesepulture">
+            <column name="idType">1</column>
+            <column name="libelle">tombe funeraire</column>
+        </table>
+        <table name="typesepulture">
+            <column name="idType">2</column>
+            <column name="libelle">tombe cinéraire</column>
+        </table>
+        <table name="typesepulture">
+            <column name="idType">3</column>
+            <column name="libelle">monument mixte</column>
+        </table>
+        <table name="typesepulture">
+            <column name="idType">4</column>
+            <column name="libelle">caveau</column>
+        </table>
+        <table name="typesepulture">
+            <column name="idType">5</column>
+            <column name="libelle">columbarium</column>
         </table>
     </database>
 </pma_xml_export>

@@ -45,6 +45,18 @@ class SearchFragment : Fragment() {
             }
         })
 
+        // Observer pour surveiller les changements dans les noms des cimetières
+        searchViewModel.getCimetiereName(requireContext()).observe(viewLifecycleOwner, Observer { cimetiereNames ->
+            if (cimetiereNames != null && cimetiereNames.isNotEmpty()) {
+                val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, cimetiereNames)
+                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                binding.spinnerCimetiere.adapter = adapter
+            } else {
+                // Gérer le cas où les données sont null ou vides
+                Log.e("SearchFragment", "Cimetiere names null or empty")
+            }
+        })
+
         binding.spinnerSexe.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,

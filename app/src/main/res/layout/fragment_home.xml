@@ -28,7 +28,7 @@
                 android:src="@drawable/img_logo" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/txtSlogan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

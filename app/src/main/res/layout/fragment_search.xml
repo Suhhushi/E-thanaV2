@@ -165,7 +165,7 @@
                             android:gravity="center" />
 
                         <Spinner
-                            android:id="@+id/spinnerVille"
+                            android:id="@+id/spinnerCimetiere"
                             android:layout_width="280dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="32dp"
