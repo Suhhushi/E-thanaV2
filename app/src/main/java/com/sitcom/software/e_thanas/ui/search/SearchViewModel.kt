@@ -1,4 +1,4 @@
-package com.sitcom.software.e_thanas.ui.Search
+package com.sitcom.software.e_thanas.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
