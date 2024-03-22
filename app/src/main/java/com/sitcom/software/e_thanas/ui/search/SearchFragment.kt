@@ -27,56 +27,9 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-
-
-
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
-
-
-
-
-
-
-
-
-
-        binding.btnRechercher.setOnClickListener {
-            // Récupérer les informations du formulaire
-            val sexe = binding.spinnerSexe.selectedItem.toString()
-            val nom = binding.editTextNom.text.toString()
-            val nomJF = binding.editTextNomJeuneFille.text.toString()
-            val prenom = binding.editTextPrenom.text.toString()
-            val ville = binding.spinnerVille.selectedItem.toString()
-            val cimetiere = binding.spinnerCimetiere.selectedItem.toString()
-
-            // Créer un Bundle pour transmettre les informations au fragment cible
-            val bundle = Bundle().apply {
-                putString("sexe", sexe)
-                putString("nom", nom)
-                putString("nomJF", nomJF)
-                putString("prenom", prenom)
-                putString("ville", ville)
-                putString("cimetiere", cimetiere)
-            }
-
-            val navController = findNavController()
-
-            // Naviguer vers le fragment de recherche
-            navController.navigate(com.sitcom.software.e_thanas.R.id.navigation_sepulture, bundle)
-        }
-
-
-
-
-
-
-
-
-
 
 
         // Initialiser la ViewModel
@@ -141,17 +94,22 @@ class SearchFragment : Fragment() {
         // Dans SearchFragment, dans la méthode onCreateView ou ailleurs approprié
         // Supposons que vous avez un bouton nommé btnSearch dans votre layout XML
 
-        binding.btnValider.setOnClickListener {
+        binding.btnRechercher.setOnClickListener {
             // Lorsque l'utilisateur appuie sur le bouton de recherche
             val cimetiereSelected = binding.spinnerCimetiere.selectedItem.toString()
             val villeSelected = binding.spinnerVille.selectedItem.toString()
+            val nom = binding.editTextNom.text.toString()
+            val prenom = binding.editTextPrenom.text.toString()
 
             val bundle = Bundle()
             bundle.putString("cimetiere", cimetiereSelected)
             bundle.putString("ville", villeSelected)
+            bundle.putString("nom", nom)
+            bundle.putString("prenom", prenom)
 
-            findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment)
+            findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
         }
+
 
 
         return root

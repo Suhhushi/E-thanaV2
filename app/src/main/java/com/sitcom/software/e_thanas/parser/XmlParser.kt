@@ -43,6 +43,29 @@ object XmlParser {
         return cimetieres
     }
 
+    fun parseDefunts(context: Context): List<Defunt> {
+        val defunts = mutableListOf<Defunt>()
+        try {
+            val resourceId = context.resources.getIdentifier("bd_ethana", "xml", context.packageName)
+            val parser = context.resources.getXml(resourceId)
+            var eventType = parser.eventType
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG && parser.name == "table" && parser.getAttributeValue(null, "name") == "defunts") {
+                    while (parser.next() != XmlPullParser.END_TAG) {
+                        if (parser.eventType == XmlPullParser.START_TAG && parser.name == "table") {
+                            val defunt = parseDefunt(parser)
+                            defunts.add(defunt)
+                        }
+                    }
+                }
+                eventType = parser.next()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return defunts
+    }
+
     private fun parseCimetiere(parser: XmlPullParser): Cimetiere {
         var id = 0
         var nom = "Cimetière"

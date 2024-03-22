@@ -14,14 +14,10 @@ class SearchViewModel : ViewModel() {
     private val dataSexe: MutableLiveData<List<String>> = MutableLiveData()
     private val dataCimetiereName: MutableLiveData<List<String>> = MutableLiveData()
     private val dataCimetiereVille: MutableLiveData<List<String>> = MutableLiveData()
-
     // Liste pour stocker les données du fichier XML
     private val cimetieresList = mutableListOf<Cimetiere>()
-
     // LiveData pour observer les changements dans les données
     private val _cimetieresLiveData = MutableLiveData<List<Cimetiere>>()
-    val cimetieresLiveData get() = _cimetieresLiveData
-
     fun getCimetiereName(context: Context): LiveData<List<String>> {
         GlobalScope.launch(Dispatchers.IO) {
             val cimetieres = XmlParser.parseXml(context)
