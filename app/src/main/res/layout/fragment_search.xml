@@ -9,17 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#184A58"
+        android:background="#488CA0"
         android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textViewSearch"
@@ -27,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Veuillez remplir les champs suivant pour pouvoir localiser une sépulture"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,7 +62,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Informations du défunt"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/black"
                             android:textSize="17sp" />
                     </LinearLayout>
 
@@ -80,8 +79,8 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="32dp"
-                            android:background="#184A58"
-                            android:gravity="center" />
+                            android:background="@drawable/spinner_border"
+                            android:gravity="center"/>
 
                         <LinearLayout
                             android:id="@+id/conditionalLayout"
@@ -111,12 +110,12 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="32dp"
-                            android:background="#184A58"
+                            android:background="@drawable/spinner_border"
                             android:hint="Nom"
                             android:inputType="text"
                             android:paddingLeft="10dp"
-                            android:textColor="#FFFFFF"
-                            android:textColorHint="#FFFFFF" />
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black" />
 
                         <EditText
                             android:id="@+id/editTextPrenom"
@@ -125,10 +124,10 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="32dp"
-                            android:background="#184A58"
+                            android:background="@drawable/spinner_border"
                             android:hint="Prenom"
                             android:paddingLeft="10dp"
-                            android:textColorHint="#FFFFFF" />
+                            android:textColorHint="@color/black" />
 
                     </LinearLayout>
 
@@ -161,7 +160,7 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="32dp"
-                            android:background="#184A58"
+                            android:background="@drawable/spinner_border"
                             android:gravity="center" />
 
                         <Spinner
@@ -171,7 +170,7 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="32dp"
-                            android:background="#184A58"
+                            android:background="@drawable/spinner_border"
                             android:gravity="center" />
                     </LinearLayout>
 

@@ -85,8 +85,13 @@ class CimetieresFragment : Fragment() {
         mMap.controller.animateTo(centreFrance)
         mMap.controller.setZoom(6.2)
 
-
-
+        mMyLocationOverlay.runOnFirstFix {
+            requireActivity().runOnUiThread {
+                val userLocation = mMyLocationOverlay.myLocation
+                mMap.controller.animateTo(userLocation)
+                mMap.controller.setZoom(13.0) // Zoom level 15.0 (you can adjust as needed)
+            }
+        }
 
         // Ajouter un marqueur pour le cimetière de Croix Daurade
         val marker1 = Marker(mMap)
@@ -141,15 +146,6 @@ class CimetieresFragment : Fragment() {
 
             true
         }
-
-
-
-
-
-
-
-
-
 
         // Centrer la carte sur la position de l'utilisateur
         // Zoom sur la position de l'utilisateur lorsque la première position fixée est obtenue
