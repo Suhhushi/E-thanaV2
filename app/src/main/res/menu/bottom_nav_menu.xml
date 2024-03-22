@@ -14,11 +14,11 @@
 
     <item
         android:id="@+id/navigation_favoris"
-        android:icon="@drawable/baseline_favorite_border_24"
+        android:icon="@drawable/baseline_star_border_24"
         android:iconTint="#FFFFFF"
+        android:title="@string/title_favoris"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_favoris"/>
+        app:itemTextColor="@color/white" />
 
     <item
         android:id="@+id/navigation_home"

@@ -47,6 +47,11 @@ class HomeFragment : Fragment() {
 
             // Naviguer vers le fragment de recherche
             navController.navigate(R.id.navigation_search)
+
+
+
+
+
         }
         return root
     }

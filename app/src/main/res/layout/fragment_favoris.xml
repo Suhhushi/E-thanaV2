@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Vos favoris"
+                        android:text="Défunts enregistrés"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -108,7 +108,7 @@
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_heart_broken_24" />
+                        android:src="@drawable/tombe1" />
 
                     <!-- Détails -->
                     <LinearLayout
@@ -150,7 +150,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/baseline_heart_broken_24" />
+
+                        app:srcCompat="@drawable/baseline_star_24" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -181,7 +182,7 @@
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_heart_broken_24" />
+                        android:src="@drawable/tombe2" />
 
                     <!-- Détails -->
                     <LinearLayout
@@ -223,7 +224,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/baseline_heart_broken_24" />
+                        app:srcCompat="@drawable/baseline_star_24" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
