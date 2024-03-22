@@ -96,7 +96,7 @@
             <column name="idDefunt">1</column>
             <column name="nom">BONNET</column>
             <column name="nomJeuneFille">MOREL</column>
-            <column name="prenom">Marie</column>
+            <column name="prenom">MARIE</column>
             <column name="dateNaiss">1955-03-25</column>
             <column name="dateDeces">2016-07-20</column>
             <column name="idSepulture">1</column>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sitcom.software.e_thanas.R
@@ -24,17 +25,36 @@ class ListDefuntFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Initialisez votre ViewModel ici
         viewModel = ViewModelProvider(this).get(ListDefuntViewModel::class.java)
 
+        // Appel de la fonction pour récupérer tous les défunts
+        viewModel.getDefunts(requireContext())
+
+        // Observer les changements de la LiveData contenant la liste des défunts
+        viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
+
+            // Afficher la liste des défunts dans le logcat
+            val nom = arguments?.getString("nom")?.let { viewModel.normalizeString(it) }
+            val prenom = arguments?.getString("prenom")?.let { viewModel.normalizeString(it) }
+
+            val defuntsFiltres = defunts.filter { defunt ->
+                defunt.nom == nom && defunt.prenom == prenom
+            }
+
+            for (defunt in defuntsFiltres) {
+                Log.d("ListDefuntFragment", "Defunt: $defunt")
+                // Afficher ou manipuler les défunts filtrés comme nécessaire
+            }
+        })
+
         // Récupérer les données passées par le Bundle
-        val cimetiere = arguments?.getString("cimetiere")
-        val ville = arguments?.getString("ville")
         val nom = arguments?.getString("nom")
         val prenom = arguments?.getString("prenom")
 
         // Utilisez les données récupérées comme vous le souhaitez
-        Log.d("ListDefuntFragment", "Cimetiere: $cimetiere, Ville: $ville, Nom: $nom, Prenom: $prenom")
+        Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom")
 
         // Mettez en place votre RecyclerView ou d'autres éléments de votre fragment ici
         // Trouvez le bouton de retour par son ID
@@ -52,3 +72,5 @@ class ListDefuntFragment : Fragment() {
         findNavController().navigateUp()
     }
 }
+
+
