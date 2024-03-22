@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Localiser la sépulture d'un défunt "
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
 

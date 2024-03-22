@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#184A58"
+    android:background="@color/bleu_ciel"
     tools:context=".ui.favoris.FavorisFragment">
 
     <LinearLayout
@@ -49,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="Défunts enregistrés"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <!-- Espace en dessous du titre -->
@@ -123,7 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dupont"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                         <TextView
@@ -131,7 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Luc"
-                            android:textColor="@android:color/white"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp" />
 
                         <TextView
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cimetière de Croix Daurade"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -197,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dupont"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                         <TextView
@@ -205,7 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Luc"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                         <TextView
@@ -213,7 +213,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cimetière de Croix Daurade"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>

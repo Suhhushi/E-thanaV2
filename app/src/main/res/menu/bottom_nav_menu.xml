@@ -3,46 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/baseline_search_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_search" />
+        android:iconTint="@color/black"
+        android:title="@string/title_search"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
 
     <item
         android:id="@+id/navigation_favoris"
         android:icon="@drawable/baseline_star_border_24"
-        android:iconTint="#FFFFFF"
+        android:iconTint="@color/black"
         android:title="@string/title_favoris"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white" />
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/baseline_home_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_home" />
+        android:iconTint="@color/black"
+        android:title="@string/title_home"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
 
 
     <item
         android:id="@+id/navigation_cimetieres"
         android:icon="@drawable/baseline_map_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_cimetieres" />
+        android:iconTint="@color/black"
+        android:title="@string/title_cimetieres"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
 
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/baseline_account_circle_24"
-        android:iconTint="#FFFFFF"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:title="@string/title_account" />
+        android:iconTint="@color/black"
+        android:title="@string/title_account"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
 
 </menu>

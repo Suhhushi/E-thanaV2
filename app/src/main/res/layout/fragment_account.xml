@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="MON COMPTE"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="26sp" />
             </LinearLayout>
 
@@ -86,7 +86,7 @@
                         android:baselineAligned="false"
                         android:paddingTop="15dp"
                         android:text="Statut du compte"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:translationX="50px" />
                 </LinearLayout>
@@ -123,7 +123,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Compte Standard"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -182,7 +182,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Paramètres du compte"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -218,7 +218,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Mentions Légales"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -268,7 +268,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Aides"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
