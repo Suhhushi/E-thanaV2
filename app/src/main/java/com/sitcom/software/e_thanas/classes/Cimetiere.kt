@@ -5,5 +5,6 @@ data class Cimetiere(
     val nom: String,
     val rue: String,
     val ville: String,
-    val codePostal: Int
+    val codePostal: Int,
+    val defunts: MutableList<Defunt> = mutableListOf()
 )

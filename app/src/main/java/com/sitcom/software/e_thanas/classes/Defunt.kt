@@ -7,7 +7,7 @@ data class Defunt(
     val nom: String,
     val nomJeuneFille: String?,
     val prenom: String,
-    val dateNaissance: Date,
-    val dateDeces: Date,
+    val dateNaissance: String,
+    val dateDeces: String,
     val idSepulture: Int
 )
