@@ -9,13 +9,21 @@
         android:id="@+id/navigation_home"
         android:name="com.sitcom.software.e_thanas.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.sitcom.software.e_thanas.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_listDefuntFragment"
+            app:destination="@id/listDefuntFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favoris"
@@ -40,4 +48,9 @@
         android:name="com.sitcom.software.e_thanas.ui.sepultures.SepultureFragment"
         android:label="@string/title_sepulture"
         tools:layout="@layout/fragment_sepulture" />
+    <fragment
+        android:id="@+id/listDefuntFragment"
+        android:name="com.sitcom.software.e_thanas.ui.main.ListDefuntFragment"
+        android:label="fragment_listdefunt"
+        tools:layout="@layout/fragment_listdefunt" />
 </navigation>

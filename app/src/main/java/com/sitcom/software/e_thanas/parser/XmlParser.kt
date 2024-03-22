@@ -45,9 +45,9 @@ object XmlParser {
 
     private fun parseCimetiere(parser: XmlPullParser): Cimetiere {
         var id = 0
-        var nom = ""
+        var nom = "Cimetière"
         var rue = ""
-        var ville = ""
+        var ville = "Ville"
         var codePostal = 0
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.eventType != XmlPullParser.START_TAG) {

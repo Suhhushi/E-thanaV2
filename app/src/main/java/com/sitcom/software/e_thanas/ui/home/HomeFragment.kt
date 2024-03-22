@@ -46,12 +46,7 @@ class HomeFragment : Fragment() {
             val navController = findNavController()
 
             // Naviguer vers le fragment de recherche
-            navController.navigate(R.id.navigation_search)
-
-
-
-
-
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
         }
         return root
     }

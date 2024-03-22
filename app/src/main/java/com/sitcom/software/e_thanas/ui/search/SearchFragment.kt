@@ -1,7 +1,5 @@
 package com.sitcom.software.e_thanas.ui.search
 
-import android.R
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.sitcom.software.e_thanas.classes.FormData
 import com.sitcom.software.e_thanas.databinding.FragmentSearchBinding
+import com.sitcom.software.e_thanas.R
 
 
 
@@ -87,8 +85,8 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les données
         searchViewModel.getData().observe(viewLifecycleOwner, Observer { options ->
             if (options != null && options.isNotEmpty()) {
-                val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, options)
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, options)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerSexe.adapter = adapter
             } else {
                 // Gérer le cas où les données sont null ou vides
@@ -99,12 +97,24 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les noms des cimetières
         searchViewModel.getCimetiereName(requireContext()).observe(viewLifecycleOwner, Observer { cimetiereNames ->
             if (cimetiereNames != null && cimetiereNames.isNotEmpty()) {
-                val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, cimetiereNames)
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cimetiereNames)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerCimetiere.adapter = adapter
             } else {
                 // Gérer le cas où les données sont null ou vides
                 Log.e("SearchFragment", "Cimetiere names null or empty")
+            }
+        })
+
+        // Observer pour surveiller les changements dans les noms des cimetières
+        searchViewModel.getCimetiereVille(requireContext()).observe(viewLifecycleOwner, Observer { cimetiereVille ->
+            if (cimetiereVille != null && cimetiereVille.isNotEmpty()) {
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cimetiereVille)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerVille.adapter = adapter
+            } else {
+                // Gérer le cas où les données sont null ou vides
+                Log.e("SearchFragment", "Cimetiere ville null or empty")
             }
         })
 
@@ -128,8 +138,26 @@ class SearchFragment : Fragment() {
             }
         }
 
+        // Dans SearchFragment, dans la méthode onCreateView ou ailleurs approprié
+        // Supposons que vous avez un bouton nommé btnSearch dans votre layout XML
+
+        binding.btnValider.setOnClickListener {
+            // Lorsque l'utilisateur appuie sur le bouton de recherche
+            val cimetiereSelected = binding.spinnerCimetiere.selectedItem.toString()
+            val villeSelected = binding.spinnerVille.selectedItem.toString()
+
+            val bundle = Bundle()
+            bundle.putString("cimetiere", cimetiereSelected)
+            bundle.putString("ville", villeSelected)
+
+            findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment)
+        }
+
+
         return root
     }
+
+
 
 
 

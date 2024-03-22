@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 class SearchViewModel : ViewModel() {
     private val dataSexe: MutableLiveData<List<String>> = MutableLiveData()
     private val dataCimetiereName: MutableLiveData<List<String>> = MutableLiveData()
+    private val dataCimetiereVille: MutableLiveData<List<String>> = MutableLiveData()
 
     // Liste pour stocker les données du fichier XML
     private val cimetieresList = mutableListOf<Cimetiere>()
@@ -39,6 +40,23 @@ class SearchViewModel : ViewModel() {
             dataCimetiereName.postValue(cimetiereNames)
         }
         return dataCimetiereName
+    }
+
+    fun getCimetiereVille(context: Context): LiveData<List<String>> {
+        GlobalScope.launch(Dispatchers.IO) {
+            val cimetieres = XmlParser.parseXml(context)
+            // Clear existing data before adding new data
+            cimetieresList.clear()
+            // Add new data to the list
+            cimetieresList.addAll(cimetieres)
+            // Update LiveData with the new data
+            _cimetieresLiveData.postValue(cimetieresList)
+
+            // Extract unique cimetiere cities and update dataCimetiereVille
+            val uniqueCimetiereVilles = cimetieresList.map { it.ville }.toSet().toList()
+            dataCimetiereVille.postValue(uniqueCimetiereVilles)
+        }
+        return dataCimetiereVille
     }
 
     fun getData(): LiveData<List<String>> {
