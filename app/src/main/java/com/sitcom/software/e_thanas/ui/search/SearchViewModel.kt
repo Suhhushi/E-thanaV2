@@ -57,7 +57,7 @@ class SearchViewModel : ViewModel() {
 
     fun getData(): LiveData<List<String>> {
             // Ajoutez "homme" et "femme" à la liste de données
-            val dataList = listOf("Homme", "Femme")
+            val dataList = listOf("Genre","Homme", "Femme")
             dataSexe.value = dataList
             return dataSexe
         }
