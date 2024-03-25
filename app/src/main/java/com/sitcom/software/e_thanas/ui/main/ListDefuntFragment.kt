@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sitcom.software.e_thanas.R
 
 class ListDefuntFragment : Fragment() {
@@ -34,19 +36,25 @@ class ListDefuntFragment : Fragment() {
 
         // Observer les changements de la LiveData contenant la liste des défunts
         viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
-
             // Afficher la liste des défunts dans le logcat
-            val nom = arguments?.getString("nom")?.let { viewModel.normalizeString(it) }
-            val prenom = arguments?.getString("prenom")?.let { viewModel.normalizeString(it) }
+            val nom = arguments?.getString("nom")
+            val prenom = arguments?.getString("prenom")
 
             val defuntsFiltres = defunts.filter { defunt ->
-                defunt.nom == nom && defunt.prenom == prenom
+                defunt.nom == nom || defunt.prenom == prenom
             }
 
             for (defunt in defuntsFiltres) {
                 Log.d("ListDefuntFragment", "Defunt: $defunt")
                 // Afficher ou manipuler les défunts filtrés comme nécessaire
             }
+            // Initialisez votre RecyclerView
+            val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewDefunts)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+            // Créez l'adaptateur pour votre RecyclerView
+            val adapter = DefuntAdapter(defuntsFiltres) // Utilisez la liste filtrée de défunts
+            recyclerView.adapter = adapter
         })
 
         // Récupérer les données passées par le Bundle
@@ -65,6 +73,7 @@ class ListDefuntFragment : Fragment() {
             // Appel de la fonction onBackButtonClicked lorsque le bouton est cliqué
             onBackButtonClicked(it)
         }
+
     }
 
     // La fonction pour gérer le clic sur le bouton de retour
