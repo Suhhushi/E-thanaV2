@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="HintText" parent="TextAppearance.AppCompat.Small">
+    <style name="HintText" parent="Theme.AppCompat">
         <item name="android:textColor">@color/black</item>
     </style>
 

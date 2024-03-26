@@ -38,8 +38,8 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les données
         searchViewModel.getData().observe(viewLifecycleOwner, Observer { options ->
             if (options != null && options.isNotEmpty()) {
-                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, options)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                val adapter = ArrayAdapter(requireContext(), R.layout.color_spinner_layout, options)
+                adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout)
                 binding.spinnerSexe.adapter = adapter
             } else {
                 // Gérer le cas où les données sont null ou vides
@@ -50,8 +50,8 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les noms des cimetières
         searchViewModel.getCimetiereName(requireContext()).observe(viewLifecycleOwner, Observer { cimetiereNames ->
             if (cimetiereNames != null && cimetiereNames.isNotEmpty()) {
-                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cimetiereNames)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                val adapter = ArrayAdapter(requireContext(), R.layout.color_spinner_layout, cimetiereNames)
+                adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout)
                 binding.spinnerCimetiere.adapter = adapter
             } else {
                 // Gérer le cas où les données sont null ou vides
@@ -62,8 +62,8 @@ class SearchFragment : Fragment() {
         // Observer pour surveiller les changements dans les noms des cimetières
         searchViewModel.getCimetiereVille(requireContext()).observe(viewLifecycleOwner, Observer { cimetiereVille ->
             if (cimetiereVille != null && cimetiereVille.isNotEmpty()) {
-                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cimetiereVille)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                val adapter = ArrayAdapter(requireContext(), R.layout.color_spinner_layout, cimetiereVille)
+                adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout)
                 binding.spinnerVille.adapter = adapter
 
             } else {
