@@ -28,6 +28,7 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
         val currentDefunt = defunts[position]
         holder.nomTextView.text = currentDefunt.nom
         holder.prenomTextView.text = currentDefunt.prenom
+
         // Liez d'autres données de défunts aux vues de votre élément de liste
     }
 

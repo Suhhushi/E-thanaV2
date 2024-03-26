@@ -22,13 +22,23 @@
             android:layout_gravity="center_horizontal"
             android:paddingTop="20dp"
             android:text="RESULTATS DE RECHERCHE"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Liste des résultats correspondant à vos critères de recherche."
+            android:textColor="@color/white" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewDefunts"
             android:layout_width="match_parent"
-            android:layout_height="483dp"
+            android:layout_height="442dp"
             android:layout_marginTop="56dp"
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
