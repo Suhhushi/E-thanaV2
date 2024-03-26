@@ -133,7 +133,7 @@
                             android:id="@+id/nameTextView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dupont"
+                            android:text="DUPONT"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -207,7 +207,7 @@
                             android:id="@+id/nameTextView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dupont"
+                            android:text="MARTIN"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -215,7 +215,7 @@
                             android:id="@+id/firstNameTextView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Luc"
+                            android:text="Jean"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -223,7 +223,7 @@
                             android:id="@+id/locationTextView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cimetière de Croix Daurade"
+                            android:text="Cimetière de Terre-Cabade"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 

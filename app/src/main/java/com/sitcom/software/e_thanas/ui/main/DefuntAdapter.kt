@@ -13,6 +13,9 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
     inner class DefuntViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomTextView: TextView = itemView.findViewById(R.id.nomTextView)
         val prenomTextView: TextView = itemView.findViewById(R.id.prenomTextView)
+
+
+
         // Ajoutez d'autres vues si nécessaire pour afficher d'autres informations sur le défunt
     }
 

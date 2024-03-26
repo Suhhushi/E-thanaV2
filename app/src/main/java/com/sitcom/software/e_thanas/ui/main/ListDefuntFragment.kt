@@ -47,6 +47,7 @@ class ListDefuntFragment : Fragment() {
             for (defunt in defuntsFiltres) {
                 Log.d("ListDefuntFragment", "Defunt: $defunt")
                 // Afficher ou manipuler les défunts filtrés comme nécessaire
+
             }
             // Initialisez votre RecyclerView
             val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewDefunts)
@@ -61,10 +62,13 @@ class ListDefuntFragment : Fragment() {
         val nom = arguments?.getString("nom")
         val prenom = arguments?.getString("prenom")
 
+
+
         // Utilisez les données récupérées comme vous le souhaitez
         Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom")
 
         // Mettez en place votre RecyclerView ou d'autres éléments de votre fragment ici
+
         // Trouvez le bouton de retour par son ID
         val backButton: ImageButton = view.findViewById(R.id.btnBack)
 
@@ -73,6 +77,8 @@ class ListDefuntFragment : Fragment() {
             // Appel de la fonction onBackButtonClicked lorsque le bouton est cliqué
             onBackButtonClicked(it)
         }
+
+
 
     }
 
