@@ -84,6 +84,11 @@ class CimetieresFragment : Fragment() {
         mMap.overlays.add(mMyLocationOverlay)
         mMap.controller.animateTo(centreFrance)
         mMap.controller.setZoom(6.2)
+        //Changement du modèle du marker de cimetière
+        val mIcon = resources.getDrawable(R.drawable.baseline_location_pin_24)
+        //Faire en sorte que l'icone soit plus grande
+
+
 
         mMyLocationOverlay.runOnFirstFix {
             requireActivity().runOnUiThread {
@@ -99,9 +104,12 @@ class CimetieresFragment : Fragment() {
         marker1.position = cimetiereCroixDaurade
         marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         mMap.overlays.add(marker1)
+        marker1.icon = mIcon
         marker1.title = "Cimetière de Croix Daurade"
         marker1.snippet = "Imp. du Cimetière de Croix Daurade, 31200 Toulouse"
-        marker1.image = resources.getDrawable(R.drawable.img_logo)
+        //Marquer les horaires d'ouverture
+        marker1.subDescription  = "Horaire d'ouverture : 8h00-18h00 7/7"
+        marker1.image = resources.getDrawable(R.drawable.croix_daurade)
 
         marker1.setOnMarkerClickListener { _, _ ->
             mMap.controller.animateTo(cimetiereCroixDaurade)
@@ -116,9 +124,12 @@ class CimetieresFragment : Fragment() {
         marker2.position = cimetiereTerreCabade
         marker2.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         mMap.overlays.add(marker2)
+        marker2.icon = mIcon
         marker2.title = "Cimetière de Terre Cabade"
         marker2.snippet = "Avenue de Terre Cabade, 31100 Toulouse"
-        marker2.image = resources.getDrawable(R.drawable.img_logo)
+        marker2.subDescription  = "Horaire d'ouverture : 8h00-18h00 7/7"
+
+        marker2.image = resources.getDrawable(R.drawable.terre_cabade)
 
         marker2.setOnMarkerClickListener { _, _ ->
             mMap.controller.animateTo(cimetiereTerreCabade)
@@ -135,9 +146,11 @@ class CimetieresFragment : Fragment() {
         marker3.position = cimetiereRapas
         marker3.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         mMap.overlays.add(marker3)
+        marker3.icon = mIcon
         marker3.title = "Cimetière de Rapas"
         marker3.snippet = "63 Chem. de la Néboude, 31300 Toulouse"
-        marker3.image = resources.getDrawable(R.drawable.img_logo)
+        marker3.subDescription  = "Horaire d'ouverture : 8h00-18h00 7/7"
+        marker3.image = resources.getDrawable(R.drawable.rapas)
 
         marker3.setOnMarkerClickListener { _, _ ->
             mMap.controller.animateTo(cimetiereRapas)

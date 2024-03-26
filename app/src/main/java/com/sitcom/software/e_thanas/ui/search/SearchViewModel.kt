@@ -18,6 +18,7 @@ class SearchViewModel : ViewModel() {
     private val cimetieresList = mutableListOf<Cimetiere>()
     // LiveData pour observer les changements dans les données
     private val _cimetieresLiveData = MutableLiveData<List<Cimetiere>>()
+
     fun getCimetiereName(context: Context): LiveData<List<String>> {
         GlobalScope.launch(Dispatchers.IO) {
             val cimetieres = XmlParser.parseXml(context)
@@ -35,6 +36,7 @@ class SearchViewModel : ViewModel() {
             }
             dataCimetiereName.postValue(cimetiereNames)
         }
+
         return dataCimetiereName
     }
 
@@ -59,6 +61,7 @@ class SearchViewModel : ViewModel() {
             // Ajoutez "homme" et "femme" à la liste de données
             val dataList = listOf("Genre","Homme", "Femme")
             dataSexe.value = dataList
+
             return dataSexe
         }
 }

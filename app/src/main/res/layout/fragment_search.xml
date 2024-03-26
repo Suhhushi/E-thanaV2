@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +22,23 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="6sp"
+                android:gravity="center"
+                android:text="FORMULAIRE DE RECHECHE"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <TextView
                 android:id="@+id/textViewSearch"
                 android:layout_width="274dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Veuillez remplir les champs suivant pour pouvoir localiser une sépulture"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,7 +92,8 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="32dp"
                             android:background="@drawable/spinner_border"
-                            android:gravity="center"/>
+                            android:gravity="center" />
+
 
                         <LinearLayout
                             android:id="@+id/conditionalLayout"
@@ -97,10 +110,10 @@
                                 android:layout_marginStart="32dp"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginEnd="32dp"
-                                android:background="#184A58"
+                                android:background="@drawable/spinner_border"
                                 android:hint="Nom de jeune fille"
                                 android:paddingLeft="10dp"
-                                android:textColorHint="#FFFFFF" />
+                                android:textColorHint="@color/black" />
                         </LinearLayout>
 
                         <EditText
@@ -127,6 +140,7 @@
                             android:background="@drawable/spinner_border"
                             android:hint="Prenom"
                             android:paddingLeft="10dp"
+                            android:textColor="@color/black"
                             android:textColorHint="@color/black" />
 
                     </LinearLayout>
@@ -143,7 +157,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="bottom"
                             android:text="Localisation de la sépulture"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/black"
                             android:textSize="17sp" />
                     </LinearLayout>
 
@@ -172,6 +186,7 @@
                             android:layout_marginEnd="32dp"
                             android:background="@drawable/spinner_border"
                             android:gravity="center" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -184,6 +199,8 @@
                             android:id="@+id/btnRechercher"
                             android:layout_width="match_parent"
                             android:layout_height="66dp"
+                            android:background="@color/bleu_ciel"
+                            android:backgroundTint="@color/bleu_ciel"
                             android:text="RECHERCHER" />
                     </LinearLayout>
 
@@ -194,5 +211,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

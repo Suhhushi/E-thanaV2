@@ -19,6 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal">
 
             <!-- Espace gauche -->
@@ -39,7 +40,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="49dp"
-                    android:background="@drawable/rounded_corners"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -48,15 +48,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Défunts enregistrés"
-                        android:textColor="@color/black" />
+                        android:text="DEFUNTS ENREGISTRES"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <!-- Espace en dessous du titre -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:orientation="vertical"></LinearLayout>
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Liste de toutes les sépultures enregistrés créant ainsi des raccourcis"
+                        android:textColor="@color/white" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Espace à droite -->

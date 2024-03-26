@@ -65,6 +65,7 @@ class SearchFragment : Fragment() {
                 val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cimetiereVille)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerVille.adapter = adapter
+
             } else {
                 // Gérer le cas où les données sont null ou vides
                 Log.e("SearchFragment", "Cimetiere ville null or empty")
