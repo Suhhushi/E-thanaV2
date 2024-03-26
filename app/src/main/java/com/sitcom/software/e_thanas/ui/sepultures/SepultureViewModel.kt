@@ -1,4 +1,4 @@
-package com.sitcom.software.e_thanas.ui.main
+package com.sitcom.software.e_thanas.ui.sepultures
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import java.text.Normalizer
 import java.util.Locale
 
-class ListDefuntViewModel : ViewModel() {
+class SepultureViewModel : ViewModel() {
 
     private val _defunts = MutableLiveData<List<Defunt>>()
     val defunts: LiveData<List<Defunt>>

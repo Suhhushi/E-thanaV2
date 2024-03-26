@@ -1,13 +1,22 @@
+package com.sitcom.software.e_thanas.ui.sepultures
+
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.sitcom.software.e_thanas.R
+import com.sitcom.software.e_thanas.classes.Defunt
+import com.sitcom.software.e_thanas.ui.main.ListDefuntViewModel
 
 
 class SepultureFragment : Fragment() {
+
+    private lateinit var viewModel: SepultureViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,20 +29,34 @@ class SepultureFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Récupérer les données transmises depuis le fragment précédent
-        val sexe = arguments?.getString("sexe")
-        val nom = arguments?.getString("nom")
-        val nomJF = arguments?.getString("nomJF")
-        val prenom = arguments?.getString("prenom")
-        val ville = arguments?.getString("ville")
-        val cimetiere = arguments?.getString("cimetiere")
+        // Initialisez votre ViewModel ici
+        viewModel = ViewModelProvider(this).get(SepultureViewModel::class.java)
 
-        // Afficher les données dans les TextView
-        view.findViewById<TextView>(R.id.textViewNom).text = nom
-        view.findViewById<TextView>(R.id.textViewPrenom).text = prenom
-        view.findViewById<TextView>(R.id.textViewVille).text = ville
-        view.findViewById<TextView>(R.id.textViewCimetiere).text = cimetiere
-        view.findViewById<TextView>(R.id.textViewNomJF).text = nomJF
+        viewModel.getDefunts(requireContext())
 
+        // Observer pour écouter les changements dans la liste des défunts
+        viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
+            // Récupérer l'ID du défunt depuis les arguments
+            val defuntId = arguments?.getInt("id_defunt")
+
+            Log.d("SepultureFragment", "ID du défunt: $defuntId")
+
+            // Récupérer le défunt correspondant à l'ID
+            val defunt = defunts.find { it.id == defuntId }
+
+            if (defunt != null) {
+                // Afficher les détails du défunt dans le logcat
+                Log.d("SepultureFragment", "Défunt trouvé : $defunt")
+
+                view.findViewById<TextView>(R.id.textViewNom).text = defunt.nom
+                view.findViewById<TextView>(R.id.textViewPrenom).text = defunt.prenom
+            } else {
+                Log.e("SepultureFragment", "Défunt non trouvé avec l'ID $defuntId")
+            }
+
+        })
     }
 }
+
+
+

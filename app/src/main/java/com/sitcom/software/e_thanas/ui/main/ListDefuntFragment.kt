@@ -40,24 +40,9 @@ class ListDefuntFragment : Fragment() {
             val nom = arguments?.getString("nom")
             val prenom = arguments?.getString("prenom")
 
-
-
-            var defuntsFiltres = defunts.filter { defunt ->
-                defunt.nom == nom && defunt.prenom == prenom
+            val defuntsFiltres = defunts.filter { defunt ->
+                (defunt.nom == nom || defunt.prenom == prenom) && defunt.id != 0
             }
-            if (defuntsFiltres.isEmpty() && prenom.isNullOrEmpty()){
-                defuntsFiltres = defunts.filter { defunt ->
-                    defunt.nom == nom
-                }
-            }
-            if (defuntsFiltres.isEmpty() && nom.isNullOrEmpty()){
-                defuntsFiltres = defunts.filter { defunt ->
-                    defunt.prenom == prenom
-                }
-            }
-
-
-
 
             for (defunt in defuntsFiltres) {
                 Log.d("ListDefuntFragment", "Defunt: $defunt")
@@ -67,7 +52,6 @@ class ListDefuntFragment : Fragment() {
             // Initialisez votre RecyclerView
             val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewDefunts)
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
 
             // Créez l'adaptateur pour votre RecyclerView
             val adapter = DefuntAdapter(defuntsFiltres) // Utilisez la liste filtrée de défunts
@@ -93,12 +77,6 @@ class ListDefuntFragment : Fragment() {
             // Appel de la fonction onBackButtonClicked lorsque le bouton est cliqué
             onBackButtonClicked(it)
         }
-
-        //Si clic sur un layout, alors redirection vers la page sépulture avec les infos du layout
-
-
-
-
 
     }
 

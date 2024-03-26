@@ -36,6 +36,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/title_sepulture"
+                        android:textColor="@color/black"
                         android:textSize="24sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -83,7 +84,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="TextView"
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/textViewNomJF"
@@ -91,7 +93,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="TextView"
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/textViewPrenom"

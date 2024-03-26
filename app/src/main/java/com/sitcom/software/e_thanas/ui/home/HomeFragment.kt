@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sitcom.software.e_thanas.R
 import com.sitcom.software.e_thanas.databinding.FragmentHomeBinding
-import com.sitcom.software.e_thanas.ui.home.HomeViewModel
 
 class HomeFragment : Fragment() {
 
@@ -42,9 +41,6 @@ class HomeFragment : Fragment() {
         homeViewModel.loadXmlData(requireContext())
 
         binding.btnLocaliser.setOnClickListener {
-            // Obtenir le NavController à partir de l'activity
-            val navController = findNavController()
-
             // Naviguer vers le fragment de recherche
             findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
         }

@@ -1,10 +1,14 @@
 package com.sitcom.software.e_thanas.ui.main
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.sitcom.software.e_thanas.MainActivity
 import com.sitcom.software.e_thanas.R
 import com.sitcom.software.e_thanas.classes.Defunt
 
@@ -13,10 +17,7 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
     inner class DefuntViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomTextView: TextView = itemView.findViewById(R.id.nomTextView)
         val prenomTextView: TextView = itemView.findViewById(R.id.prenomTextView)
-
-
-
-        // Ajoutez d'autres vues si nécessaire pour afficher d'autres informations sur le défunt
+        val btnDefunt: Button = itemView.findViewById(R.id.btnDefunt)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefuntViewHolder {
@@ -29,8 +30,16 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
         holder.nomTextView.text = currentDefunt.nom
         holder.prenomTextView.text = currentDefunt.prenom
 
-        // Liez d'autres données de défunts aux vues de votre élément de liste
+
+        val bundle = Bundle()
+        bundle.putInt("id_defunt", currentDefunt.id)
+
+
+        holder.btnDefunt.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.action_listDefuntFragment_to_sepultureFragment, bundle)
+        }
     }
 
     override fun getItemCount() = defunts.size
 }
+

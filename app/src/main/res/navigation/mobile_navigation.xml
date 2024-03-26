@@ -25,6 +25,7 @@
             app:destination="@id/listDefuntFragment" />
     </fragment>
 
+
     <fragment
         android:id="@+id/navigation_favoris"
         android:name="com.sitcom.software.e_thanas.ui.favoris.FavorisFragment"
@@ -48,9 +49,15 @@
         android:name="com.sitcom.software.e_thanas.ui.sepultures.SepultureFragment"
         android:label="@string/title_sepulture"
         tools:layout="@layout/fragment_sepulture" />
+
     <fragment
         android:id="@+id/listDefuntFragment"
         android:name="com.sitcom.software.e_thanas.ui.main.ListDefuntFragment"
         android:label="fragment_listdefunt"
-        tools:layout="@layout/fragment_listdefunt" />
+        tools:layout="@layout/fragment_listdefunt">
+    <action
+        android:id="@+id/action_listDefuntFragment_to_sepultureFragment"
+        app:destination="@id/navigation_sepulture" />
+    </fragment>
+
 </navigation>
