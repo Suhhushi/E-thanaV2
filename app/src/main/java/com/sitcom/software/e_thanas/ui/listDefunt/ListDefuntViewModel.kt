@@ -1,17 +1,14 @@
-package com.sitcom.software.e_thanas.ui.main
+package com.sitcom.software.e_thanas.ui.listDefunt
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sitcom.software.e_thanas.classes.Cimetiere
 import com.sitcom.software.e_thanas.classes.Defunt
 import com.sitcom.software.e_thanas.parser.XmlParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.text.Normalizer
-import java.util.Locale
 
 class ListDefuntViewModel : ViewModel() {
 

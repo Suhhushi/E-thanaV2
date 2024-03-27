@@ -1,4 +1,4 @@
-package com.sitcom.software.e_thanas.ui.main
+package com.sitcom.software.e_thanas.ui.listDefunt
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.sitcom.software.e_thanas.MainActivity
 import com.sitcom.software.e_thanas.R
 import com.sitcom.software.e_thanas.classes.Defunt
 

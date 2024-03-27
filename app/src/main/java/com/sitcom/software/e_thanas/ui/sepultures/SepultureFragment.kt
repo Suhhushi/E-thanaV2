@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sitcom.software.e_thanas.R
-import com.sitcom.software.e_thanas.classes.Defunt
-import com.sitcom.software.e_thanas.ui.main.ListDefuntViewModel
 
 
 class SepultureFragment : Fragment() {
@@ -50,11 +49,38 @@ class SepultureFragment : Fragment() {
 
                 view.findViewById<TextView>(R.id.textViewNom).text = defunt.nom
                 view.findViewById<TextView>(R.id.textViewPrenom).text = defunt.prenom
+                if (defunt.nomJeuneFille != null){
+                    view.findViewById<TextView>(R.id.textViewNomJF).text = defunt.nomJeuneFille
+                    view.findViewById<TextView>(R.id.textViewNomJF).isVisible = true
+                }
+
+                // Récupérer et afficher la liste des sépultures dans le logcat
+                viewModel.getSepulture(requireContext())
+                viewModel.sepulture.observe(viewLifecycleOwner, Observer { sepultures ->
+
+                    val sepulture = sepultures.find { it.id == defunt.idSepulture}
+                    Log.d("SepultureFragment", "La sépultures : $sepulture")
+
+                    val coordX = sepulture?.coordX //pour la map
+                    val coordY = sepulture?.coordY
+
+                    // Récupérer et afficher la liste des cimetières dans le logcat
+                    viewModel.getCimetieres(requireContext())
+                    viewModel.cimetieres.observe(viewLifecycleOwner, Observer { cimetieres ->
+
+                        val cimetiere = cimetieres.find { it.id == sepulture?.idCimetiere }
+
+                        view.findViewById<TextView>(R.id.textViewVille).text = cimetiere?.ville
+                        view.findViewById<TextView>(R.id.textViewCimetiere).text = cimetiere?.nom
+
+                    })
+                })
             } else {
                 Log.e("SepultureFragment", "Défunt non trouvé avec l'ID $defuntId")
             }
 
         })
+
     }
 }
 

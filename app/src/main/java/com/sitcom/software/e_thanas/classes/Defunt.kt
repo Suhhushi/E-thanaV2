@@ -9,5 +9,5 @@ data class Defunt(
     val prenom: String,
     val dateNaissance: String,
     val dateDeces: String,
-    val idSepulture: Int
+    val idSepulture: Int,
 )

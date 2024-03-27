@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bleu_ciel"
-    tools:context=".ui.main.ListDefuntFragment">
+    tools:context=".ui.listDefunt.ListDefuntFragment">
 
     <!-- Phrase au-dessus de la liste -->
 

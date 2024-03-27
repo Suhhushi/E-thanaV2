@@ -19,7 +19,8 @@ object XmlParser {
             parser = context.resources.getXml(resourceId)
             var eventType = parser.eventType
             var currentCimetiere: Cimetiere? = null
-            var currentDefunt: Defunt? = null // Nouvelle variable pour stocker le défunt en cours de traitement
+            var currentDefunt: Defunt? = null
+            var currentSepulture: Sepulture? = null
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 when (eventType) {
                     XmlPullParser.START_TAG -> {
@@ -31,12 +32,19 @@ object XmlParser {
                                         currentCimetiere = parseCimetiere(parser)
                                         currentCimetiere?.let { cimetieres.add(it) }
                                     }
-                                    "defunts" -> { // Ajouter le parsing des défunts
+                                    "defunts" -> {
                                         currentDefunt = parseDefunt(parser)
                                         currentDefunt?.let {
-                                            // Assurez-vous que le cimetière actuel n'est pas null avant d'ajouter le défunt
                                             currentCimetiere?.let { cimetiere ->
                                                 cimetiere.defunts.add(it)
+                                            }
+                                        }
+                                    }
+                                    "sepultures" -> {
+                                        currentSepulture = parseSepulture(parser)
+                                        currentSepulture?.let {
+                                            currentCimetiere?.let { cimetiere ->
+                                                cimetiere.sepulture.add(it)
                                             }
                                         }
                                     }
@@ -52,6 +60,7 @@ object XmlParser {
         }
         return cimetieres
     }
+
 
     private fun parseDefunt(parser: XmlPullParser): Defunt {
         var id = 0
@@ -111,6 +120,33 @@ object XmlParser {
             }
         }
         return Cimetiere(id, nom, rue, ville, codePostal)
+    }
+
+    private fun parseSepulture(parser: XmlPullParser): Sepulture {
+        var id = 0
+        var coordX = ""
+        var coordY = ""
+        var idType = 0
+        var idCimetiere = 0
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.eventType != XmlPullParser.START_TAG) {
+                continue
+            }
+            when (parser.name) {
+                "column" -> {
+                    val columnName = parser.getAttributeValue(null, "name")
+                    val columnValue = parser.nextText()
+                    when (columnName) {
+                        "idSepulture" -> id = columnValue.toInt()
+                        "coordX" -> coordX = columnValue
+                        "coordY" -> coordY = columnValue
+                        "idType" -> idType = columnValue.toInt()
+                        "idCimetiere" -> idCimetiere = columnValue.toInt()
+                    }
+                }
+            }
+        }
+        return Sepulture(id, coordX, coordY, idType, idCimetiere)
     }
 
 }

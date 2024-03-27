@@ -94,7 +94,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="TextView"
-                                android:textColor="@color/black" />
+                                android:textColor="@color/black"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/textViewPrenom"
@@ -102,7 +103,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="TextView"
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/textViewVille"
@@ -110,7 +112,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="TextView"
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/textViewCimetiere"
@@ -118,7 +121,8 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="TextView"
+                                android:textColor="@color/black" />
                         </LinearLayout>
                     </LinearLayout>
 

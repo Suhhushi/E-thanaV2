@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/listDefuntFragment"
-        android:name="com.sitcom.software.e_thanas.ui.main.ListDefuntFragment"
+        android:name="com.sitcom.software.e_thanas.ui.listDefunt.ListDefuntFragment"
         android:label="fragment_listdefunt"
         tools:layout="@layout/fragment_listdefunt">
     <action

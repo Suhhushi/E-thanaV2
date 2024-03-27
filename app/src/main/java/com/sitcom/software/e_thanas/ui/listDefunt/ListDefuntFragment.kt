@@ -1,4 +1,4 @@
-package com.sitcom.software.e_thanas.ui.main
+package com.sitcom.software.e_thanas.ui.listDefunt
 
 import android.os.Bundle
 import android.util.Log
