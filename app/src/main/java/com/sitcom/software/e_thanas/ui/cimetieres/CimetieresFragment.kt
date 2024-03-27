@@ -172,7 +172,7 @@ class CimetieresFragment : Fragment() {
     }
 
     companion object {
-        private const val PERMISSION_REQUEST_CODE = 1001
+        const val PERMISSION_REQUEST_CODE = 1001
     }
 }
 

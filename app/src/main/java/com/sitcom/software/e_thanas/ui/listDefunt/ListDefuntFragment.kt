@@ -40,9 +40,22 @@ class ListDefuntFragment : Fragment() {
             val nom = arguments?.getString("nom")
             val prenom = arguments?.getString("prenom")
 
-            val defuntsFiltres = defunts.filter { defunt ->
-                (defunt.nom == nom || defunt.prenom == prenom) && defunt.id != 0
+
+            var defuntsFiltres = defunts.filter { defunt ->
+                defunt.nom == nom && defunt.prenom == prenom && defunt.id != 0
             }
+            if(defuntsFiltres.isEmpty() || nom.isNullOrEmpty()){
+                defuntsFiltres = defunts.filter { defunt ->
+                    defunt.prenom == prenom && defunt.id != 0
+                }
+            }
+            if(defuntsFiltres.isEmpty() || prenom.isNullOrEmpty()){
+                defuntsFiltres = defunts.filter { defunt ->
+                    defunt.nom == nom && defunt.id != 0
+                }
+            }
+
+
 
             for (defunt in defuntsFiltres) {
                 Log.d("ListDefuntFragment", "Defunt: $defunt")

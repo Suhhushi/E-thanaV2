@@ -7,3 +7,4 @@ data class Sepulture(
     val idType: Int,
     val idCimetiere: Int
 )
+
