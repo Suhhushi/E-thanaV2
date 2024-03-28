@@ -97,10 +97,11 @@ class SearchFragment : Fragment() {
 
         binding.btnRechercher.setOnClickListener {
             // Lorsque l'utilisateur appuie sur le bouton de recherche
-            val cimetiereSelected = binding.spinnerCimetiere.selectedItem.toString()
-            val villeSelected = binding.spinnerVille.selectedItem.toString()
-            val nom = binding.editTextNom.text.toString()
-            val prenom = binding.editTextPrenom.text.toString()
+            val cimetiereSelected = searchViewModel.normalizeInput(binding.spinnerCimetiere.selectedItem.toString(), capitalizeFirstName = true)
+            val villeSelected = searchViewModel.normalizeInput(binding.spinnerVille.selectedItem.toString(), capitalizeFirstName = true)
+            val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString())
+            val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
+
 
             val bundle = Bundle()
             bundle.putString("cimetiere", cimetiereSelected)

@@ -9,6 +9,8 @@ import com.sitcom.software.e_thanas.parser.XmlParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.Normalizer
+import java.util.Locale
 
 class SearchViewModel : ViewModel() {
     private val dataSexe: MutableLiveData<List<String>> = MutableLiveData()
@@ -64,4 +66,23 @@ class SearchViewModel : ViewModel() {
 
             return dataSexe
         }
+
+    fun removeAccents(input: String): String {
+        val normalizedString = Normalizer.normalize(input, Normalizer.Form.NFD)
+        return normalizedString.replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
+    }
+
+    fun normalizeInput(input: String, capitalizeFirstName: Boolean = false): String {
+        // Retirer les accents
+        var normalizedInput = removeAccents(input)
+        // Convertir en majuscules et supprimer les espaces supplémentaires
+        normalizedInput = normalizedInput.trim().uppercase()
+        // Capitaliser la première lettre du prénom si nécessaire
+        if (capitalizeFirstName && normalizedInput.isNotEmpty()) {
+            normalizedInput = normalizedInput.substring(0, 1) + normalizedInput.substring(1).toLowerCase()
+        }
+        return normalizedInput
+    }
+
+
 }
