@@ -112,13 +112,20 @@ class SepultureFragment : Fragment() {
                 // Afficher les détails du défunt dans le logcat
                 Log.d("SepultureFragment", "Défunt trouvé : $defunt")
 
-                view.findViewById<TextView>(R.id.textViewNomJF).isVisible = false
-                view.findViewById<TextView>(R.id.textViewNom).text = defunt.nom
-                view.findViewById<TextView>(R.id.textViewPrenom).text = defunt.prenom
-                if (defunt.nomJeuneFille != null){
-                    view.findViewById<TextView>(R.id.textViewNomJF).text = defunt.nomJeuneFille
-                    view.findViewById<TextView>(R.id.textViewNomJF).isVisible = true
+                val textViewNomJF = view.findViewById<TextView>(R.id.textViewNomJF)
+                val textViewPrenom = view.findViewById<TextView>(R.id.textViewPrenom)
+                val textViewNom = view.findViewById<TextView>(R.id.textViewNom)
+
+                // Assurez-vous que textViewNomJF est initialisé en tant que Gone si nécessaire
+                textViewNomJF.visibility = View.GONE
+
+                textViewPrenom.text = defunt.prenom
+                textViewNom.text = defunt.nom
+                if (defunt.nomJeuneFille != "NULL") {
+                    textViewNomJF.text = defunt.nomJeuneFille
+                    textViewNomJF.visibility = View.VISIBLE
                 }
+
 
                 // Récupérer et afficher la liste des sépultures dans le logcat
                 viewModel.getSepulture(requireContext())

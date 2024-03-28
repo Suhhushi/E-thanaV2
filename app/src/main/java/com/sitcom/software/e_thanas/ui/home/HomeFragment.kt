@@ -16,7 +16,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,20 +24,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        // Initialiser le ViewModel
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        // Observer pour les données des cimetières
-        homeViewModel.cimetieresLiveData.observe(viewLifecycleOwner, Observer { cimetieres ->
-            // Afficher les données des cimetières dans le Logcat
-            for (cimetiere in cimetieres) {
-                Log.d("Cimetiere", "ID: ${cimetiere.id}, Nom: ${cimetiere.nom}, Rue: ${cimetiere.rue}, Ville: ${cimetiere.ville}, Code Postal: ${cimetiere.codePostal}")
-            }
-        })
-
-        // Charger les données XML
-        homeViewModel.loadXmlData(requireContext())
 
         binding.btnLocaliser.setOnClickListener {
             // Naviguer vers le fragment de recherche

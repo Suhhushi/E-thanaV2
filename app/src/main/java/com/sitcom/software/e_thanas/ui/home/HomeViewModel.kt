@@ -11,21 +11,5 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    // Liste pour stocker les données du fichier XML
-    private val cimetieresList = mutableListOf<Cimetiere>()
 
-    // LiveData pour observer les changements dans les données
-    private val _cimetieresLiveData = MutableLiveData<List<Cimetiere>>()
-    val cimetieresLiveData get() = _cimetieresLiveData
-
-    // Fonction pour charger les données du fichier XML
-    fun loadXmlData(context: Context) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val cimetieres = XmlParser.parseXml(context)
-            // Ajouter les données à la liste
-            cimetieresList.addAll(cimetieres)
-            // Mettre à jour le LiveData avec les nouvelles données
-            _cimetieresLiveData.postValue(cimetieresList)
-        }
-    }
 }
