@@ -124,8 +124,8 @@ object XmlParser {
 
     private fun parseSepulture(parser: XmlPullParser): Sepulture {
         var id = 0
-        var coordX = ""
-        var coordY = ""
+        var coordX = 0.0
+        var coordY = 0.0
         var idType = 0
         var idCimetiere = 0
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -138,8 +138,8 @@ object XmlParser {
                     val columnValue = parser.nextText()
                     when (columnName) {
                         "idSepulture" -> id = columnValue.toInt()
-                        "coordX" -> coordX = columnValue
-                        "coordY" -> coordY = columnValue
+                        "coordX" -> coordX = columnValue.toDouble()
+                        "coordY" -> coordY = columnValue.toDouble()
                         "idType" -> idType = columnValue.toInt()
                         "idCimetiere" -> idCimetiere = columnValue.toInt()
                     }

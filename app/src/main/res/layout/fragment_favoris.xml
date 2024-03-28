@@ -18,60 +18,47 @@
         <!-- Titre -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <!-- Espace gauche -->
+            <!-- Espace au-dessus du titre -->
 
-            <!-- Titre central -->
+            <!-- Titre -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="49dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
 
-                <!-- Espace au-dessus du titre -->
-                <LinearLayout
+                <TextView
+                    android:id="@+id/map_txt_cimetiere"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:orientation="vertical"></LinearLayout>
-
-                <!-- Titre -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="49dp"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/map_txt_cimetiere"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="DEFUNTS ENREGISTRES"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <!-- Espace en dessous du titre -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Liste de toutes les sépultures enregistrés créant ainsi des raccourcis"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                    android:text="DEFUNTS ENREGISTRES"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
             </LinearLayout>
 
-            <!-- Espace à droite -->
+            <!-- Espace en dessous du titre -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Liste de toutes les sépultures enregistrés créant ainsi des raccourcis"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- Liste des éléments -->

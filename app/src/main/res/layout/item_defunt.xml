@@ -74,13 +74,15 @@
 
     <Button
         android:id="@+id/btnDefunt"
-        android:layout_width="79dp"
-        android:layout_height="38dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="313dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="18dp"
-        android:text="->"
+        android:background="@drawable/baseline_arrow_circle_right_24"
+        android:translationX="-20px"
+        android:translationY="-30px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

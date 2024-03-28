@@ -149,36 +149,36 @@
         <!-- Table sepultures -->
         <table name="sepultures">
             <column name="idSepulture">1</column>
-            <column name="coordX">43°38'27.0&quot;N</column>
-            <column name="coordY">1°27'38.4&quot;E</column>
+            <column name="coordX">43.38270</column>
+            <column name="coordY">1.27384</column>
             <column name="idType">1</column>
             <column name="idCimetiere">1</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">2</column>
-            <column name="coordX">43°38'26.9&quot;N</column>
-            <column name="coordY">1°27'38.2&quot;E</column>
+            <column name="coordX">43.640795</column>
+            <column name="coordY">1.460854</column>
             <column name="idType">4</column>
             <column name="idCimetiere">1</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">3</column>
-            <column name="coordX">43°38'21.8&quot;N</column>
-            <column name="coordY">1°27'48.9&quot;E</column>
+            <column name="coordX">43.639721</column>
+            <column name="coordY">1.461595</column>
             <column name="idType">4</column>
             <column name="idCimetiere">1</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">4</column>
-            <column name="coordX">43°36'25.8&quot;N</column>
-            <column name="coordY">1°27'39.5&quot;E</column>
+            <column name="coordX">43.640018</column>
+            <column name="coordY">1.460316</column>
             <column name="idType">4</column>
             <column name="idCimetiere">3</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">5</column>
-            <column name="coordX">43°35'25.8&quot;N</column>
-            <column name="coordY">1°25'38.8&quot;E</column>
+            <column name="coordX">43.640180</column>
+            <column name="coordY">1.461811</column>
             <column name="idType">1</column>
             <column name="idCimetiere">2</column>
         </table>

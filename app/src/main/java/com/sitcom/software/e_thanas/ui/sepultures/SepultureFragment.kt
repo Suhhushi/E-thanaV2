@@ -40,6 +40,10 @@ class SepultureFragment : Fragment() {
     private val cimetiereCroixDaurade = GeoPoint(43.640124, 1.461586)
 
 
+    private var coordX : Double = 0.0
+    private var coordY : Double = 0.0
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,6 +82,7 @@ class SepultureFragment : Fragment() {
                 CimetieresFragment.PERMISSION_REQUEST_CODE
             )
         } else {
+
             // Autorisations de localisation déjà accordées
             setupMap()
         }
@@ -122,9 +127,33 @@ class SepultureFragment : Fragment() {
                     val sepulture = sepultures.find { it.id == defunt.idSepulture}
                     Log.d("SepultureFragment", "La sépultures : $sepulture")
 
-                    val coordX = sepulture?.coordX //pour la map
-                    val coordY = sepulture?.coordY
+                    coordX = sepulture?.coordX?.toDouble()!! //pour la map
+                    coordY = sepulture?.coordY?.toDouble()!!
 
+                    //Changement du modèle du marker de cimetière
+                    val mIcon = resources.getDrawable(R.drawable.baseline_location_pin_24)
+
+                    var sepultureLoc = GeoPoint(coordX, coordY)
+                    mMap.controller.animateTo(sepultureLoc)
+
+                    // Ajouter un marqueur pour le cimetière de Croix Daurade
+                    val marker1 = Marker(mMap)
+
+                    marker1.position = sepultureLoc
+                    marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                    mMap.overlays.add(marker1)
+                    marker1.icon = mIcon
+
+
+                    marker1.setOnMarkerClickListener { _, _ ->
+
+                        marker1.showInfoWindow()
+                        true
+                    }
+
+
+
+                    Log.d("SepultureFragment", "La coordonnées : $coordX , $coordY")
 
 
 
@@ -169,15 +198,13 @@ class SepultureFragment : Fragment() {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun setupMap() {
+
         // Ajouter l'overlay de la localisation de l'utilisateur
         mMyLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), mMap)
         mMyLocationOverlay.enableMyLocation()
         mMyLocationOverlay.enableFollowLocation()
         mMap.overlays.add(mMyLocationOverlay)
-        mMap.controller.animateTo(cimetiereCroixDaurade)
         mMap.controller.setZoom(17.6)
-        //Changement du modèle du marker de cimetière
-        val mIcon = resources.getDrawable(R.drawable.baseline_location_pin_24)
         //Faire en sorte que l'icone soit plus grande
 
 
@@ -185,41 +212,10 @@ class SepultureFragment : Fragment() {
         mMyLocationOverlay.runOnFirstFix {
             requireActivity().runOnUiThread {
                 val userLocation = mMyLocationOverlay.myLocation
-                mMap.controller.animateTo(userLocation)
-                mMap.controller.setZoom(13.0) // Zoom level 15.0 (you can adjust as needed)
-            }
-        }
-
-        // Ajouter un marqueur pour le cimetière de Croix Daurade
-        val marker1 = Marker(mMap)
-
-        marker1.position = cimetiereCroixDaurade
-        marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        mMap.overlays.add(marker1)
-        marker1.icon = mIcon
-        marker1.title = "Cimetière de Croix Daurade"
-        marker1.snippet = "Imp. du Cimetière de Croix Daurade, 31200 Toulouse"
-        //Marquer les horaires d'ouverture
-        marker1.subDescription  = "Horaire d'ouverture : 8h00-18h00 7/7"
-        marker1.image = resources.getDrawable(R.drawable.croix_daurade)
-
-        marker1.setOnMarkerClickListener { _, _ ->
-            mMap.controller.animateTo(cimetiereCroixDaurade)
-            mMap.controller.setZoom(13.0)
-            marker1.showInfoWindow()
-            true
-        }
-
-
-        // Centrer la carte sur la position de l'utilisateur
-        // Zoom sur la position de l'utilisateur lorsque la première position fixée est obtenue
-        mMyLocationOverlay.runOnFirstFix {
-            requireActivity().runOnUiThread {
-                mMap.controller.animateTo(mMyLocationOverlay.myLocation)
-
 
             }
         }
+
     }
 
 
