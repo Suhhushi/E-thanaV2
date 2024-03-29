@@ -36,7 +36,18 @@
         android:id="@+id/navigation_account"
         android:name="com.sitcom.software.e_thanas.ui.account.AccountFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account">
+        <action
+        android:id="@+id/action_navigation_account_to_navigation_settings"
+        app:destination="@id/navigation_settings" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.sitcom.software.e_thanas.ui.settings.SettingsFragment"
+        android:label="PARAMETRES"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/navigation_cimetieres"
@@ -59,5 +70,7 @@
         android:id="@+id/action_listDefuntFragment_to_sepultureFragment"
         app:destination="@id/navigation_sepulture" />
     </fragment>
+
+
 
 </navigation>

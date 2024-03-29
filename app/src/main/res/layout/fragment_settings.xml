@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.account.AccountFragment">
+    tools:context=".ui.settings.SettingsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="MON COMPTE"
+                    android:text="PARAMETRES"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -51,19 +51,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Bienvenue,"
+                    android:text="Adaptez l'application selon vos choix."
                     android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/lblNomCompte"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:gravity="center"
-                    android:text="MAS Aymeric"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -86,10 +77,11 @@
                         android:layout_weight="1"
                         android:baselineAligned="false"
                         android:paddingTop="15dp"
-                        android:text="Statut du compte"
+                        android:text="Juridique"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:translationX="50px" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,7 +100,7 @@
                         <LinearLayout
                             android:layout_width="24dp"
                             android:layout_height="23dp"
-                            android:background="@drawable/baseline_account_circle_24"
+                            android:background="@drawable/baseline_balance_24"
                             android:orientation="vertical"></LinearLayout>
                     </LinearLayout>
 
@@ -123,7 +115,7 @@
                             android:id="@+id/lblCompte"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Compte Standard"
+                            android:text="Traitement de mes données"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -154,7 +146,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="610dp"
                 android:layout_weight="1"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -183,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Paramètres du compte"
+                        android:text="Accessibilité"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -206,7 +200,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/baseline_balance_24"
+                            android:background="@drawable/baseline_dark_mode_24"
                             android:orientation="horizontal"></LinearLayout>
                     </LinearLayout>
 
@@ -221,7 +215,7 @@
                             android:id="@+id/textView9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mentions Légales"
+                            android:text="Mode sombre"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -258,7 +252,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/baseline_handshake_24"
+                            android:background="@drawable/baseline_language_24"
                             android:orientation="horizontal"></LinearLayout>
                     </LinearLayout>
 
@@ -273,7 +267,7 @@
                             android:id="@+id/textView10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Aides"
+                            android:text="Langue sélectionné : Français"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -311,24 +305,35 @@
                     android:background="@drawable/img_logo"
                     android:orientation="horizontal"
                     android:scaleX="0.6"
-                    android:scaleY="0.6"></LinearLayout>
+                    android:scaleY="0.6">
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/settingsBtn"
+        android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners"
-        android:padding="15dp"
-        android:src="@drawable/baseline_settings_24"
-        android:translationX="300dp"
-        android:translationY="37dp" />
+        android:onClick="onBackButtonClicked"
+        android:padding="12dp"
+        android:src="@drawable/ic_back_button"
+        android:translationY="600dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </FrameLayout>
