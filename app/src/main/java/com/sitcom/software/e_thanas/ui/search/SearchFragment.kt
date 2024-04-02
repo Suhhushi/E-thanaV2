@@ -101,6 +101,8 @@ class SearchFragment : Fragment() {
             val villeSelected = searchViewModel.normalizeInput(binding.spinnerVille.selectedItem.toString(), capitalizeFirstName = true)
             val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString())
             val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
+            val genre = searchViewModel.normalizeInput(binding.spinnerSexe.selectedItem.toString(), capitalizeFirstName = true)
+            val nomJF = searchViewModel.normalizeInput(binding.editTextNomJeuneFille.text.toString(), capitalizeFirstName = true)
 
 
             val bundle = Bundle()
@@ -108,6 +110,10 @@ class SearchFragment : Fragment() {
             bundle.putString("ville", villeSelected)
             bundle.putString("nom", nom)
             bundle.putString("prenom", prenom)
+            bundle.putString("genre", genre)
+            bundle.putString("nomJF", nomJF)
+
+
 
             findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
         }

@@ -56,21 +56,4 @@ class SepultureViewModel : ViewModel() {
             _cimetieres.postValue(cimetieresList)
         }
     }
-
-    fun drawRoute(mMap : MapView, startPoint: GeoPoint, endPoint: GeoPoint) {
-        val polyline = Polyline()
-        polyline.color = Color.BLUE
-        polyline.width = 5f
-
-        // Ajoutez les points de départ et d'arrivée à la ligne
-        polyline.addPoint(startPoint)
-        polyline.addPoint(endPoint)
-
-        // Ajoutez la ligne à la carte
-        mMap.overlays.add(polyline)
-
-        // Appelez invalidate pour redessiner la carte avec la ligne ajoutée
-        mMap.invalidate()
-    }
-
 }

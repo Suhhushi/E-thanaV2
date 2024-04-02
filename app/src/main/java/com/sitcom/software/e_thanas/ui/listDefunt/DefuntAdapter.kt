@@ -17,6 +17,7 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
         val nomTextView: TextView = itemView.findViewById(R.id.nomTextView)
         val prenomTextView: TextView = itemView.findViewById(R.id.prenomTextView)
         val btnDefunt: Button = itemView.findViewById(R.id.btnDefunt)
+        val locationTextView: TextView = itemView.findViewById(R.id.locationTextView1) // Trouver le locationTextView1 ici
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefuntViewHolder {
@@ -28,6 +29,7 @@ class DefuntAdapter(private val defunts: List<Defunt>) : RecyclerView.Adapter<De
         val currentDefunt = defunts[position]
         holder.nomTextView.text = currentDefunt.nom
         holder.prenomTextView.text = currentDefunt.prenom
+        holder.locationTextView.text = currentDefunt.dateDeces
 
 
         val bundle = Bundle()
