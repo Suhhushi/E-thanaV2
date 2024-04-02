@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sitcom.software.e_thanas.R
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.Marker
 
 class ListDefuntFragment : Fragment() {
 
@@ -39,23 +42,25 @@ class ListDefuntFragment : Fragment() {
             // Afficher la liste des défunts dans le logcat
             val nom = arguments?.getString("nom")
             val prenom = arguments?.getString("prenom")
+            val cimetiere = arguments?.getString("cimetiere")
+            val ville = arguments?.getString("ville")
 
 
             var defuntsFiltres = defunts.filter { defunt ->
                 defunt.nom == nom && defunt.prenom == prenom && defunt.id != 0
             }
+
             if(defuntsFiltres.isEmpty() || nom.isNullOrEmpty()){
                 defuntsFiltres = defunts.filter { defunt ->
                     defunt.prenom == prenom && defunt.id != 0
                 }
             }
+
             if(defuntsFiltres.isEmpty() || prenom.isNullOrEmpty()){
                 defuntsFiltres = defunts.filter { defunt ->
                     defunt.nom == nom && defunt.id != 0
                 }
             }
-
-
 
             for (defunt in defuntsFiltres) {
                 Log.d("ListDefuntFragment", "Defunt: $defunt")
@@ -98,5 +103,3 @@ class ListDefuntFragment : Fragment() {
         findNavController().navigateUp()
     }
 }
-
-

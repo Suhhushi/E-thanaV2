@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sitcom.software.e_thanas.R
 import com.sitcom.software.e_thanas.classes.Cimetiere
 import com.sitcom.software.e_thanas.classes.Defunt
 import com.sitcom.software.e_thanas.classes.Sepulture
@@ -15,6 +16,9 @@ import kotlinx.coroutines.launch
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Polyline
+import org.xmlpull.v1.XmlPullParser
+import java.io.File
+import java.io.FileOutputStream
 
 
 class SepultureViewModel : ViewModel() {
@@ -68,4 +72,5 @@ class SepultureViewModel : ViewModel() {
         // Appelez invalidate pour redessiner la carte avec la ligne ajoutée
         mMap.invalidate()
     }
+
 }

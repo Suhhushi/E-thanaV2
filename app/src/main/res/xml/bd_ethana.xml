@@ -216,5 +216,9 @@
             <column name="idEnregistrement">1</column>
             <column name="idDefunt">2</column>
         </table>
+        <table name="enregistrer">
+            <column name="idEnregistrement">2</column>
+            <column name="idDefunt">3</column>
+        </table>
     </database>
 </pma_xml_export>
