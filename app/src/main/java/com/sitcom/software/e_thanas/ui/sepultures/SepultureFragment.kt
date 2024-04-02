@@ -11,13 +11,11 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sitcom.software.e_thanas.R
-import com.sitcom.software.e_thanas.classes.Sepulture
 import com.sitcom.software.e_thanas.ui.cimetieres.CimetieresFragment
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -141,16 +139,27 @@ class SepultureFragment : Fragment() {
                     val mIcon = resources.getDrawable(R.drawable.baseline_location_pin_24)
 
                     var sepultureLoc = GeoPoint(coordX, coordY)
+                    var sepultureLoc2 = GeoPoint(coordX + 0.3, coordY + 0.3)
+
                     mMap.controller.animateTo(sepultureLoc)
+                    mMap.controller.animateTo(sepultureLoc2)
 
                     // Ajouter un marqueur pour le cimetière de Croix Daurade
                     val marker1 = Marker(mMap)
+                    val marker2 = Marker(mMap)
 
                     marker1.position = sepultureLoc
                     marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                     mMap.overlays.add(marker1)
                     marker1.icon = mIcon
 
+                    marker2.position = sepultureLoc2
+                    marker2.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                    mMap.overlays.add(marker2)
+                    marker2.icon = mIcon
+
+                    // Après avoir ajouté vos marqueurs sur la carte
+                    viewModel.drawRoute(mMap, sepultureLoc, sepultureLoc2)
 
                     marker1.setOnMarkerClickListener { _, _ ->
 
@@ -194,10 +203,6 @@ class SepultureFragment : Fragment() {
         favButtonImg.setOnClickListener{
             onFavButtonClicked(it)
     }
-
-
-
-
 
     }
 

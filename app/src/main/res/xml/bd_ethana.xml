@@ -62,6 +62,15 @@
                   PRIMARY KEY (`idType`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
             </pma:table>
+            <pma:table name="enregistrer">
+                CREATE TABLE `enregistrer` (
+                `idEnregistrement` int NOT NULL AUTO_INCREMENT,
+                `idSepulture` int NOT NULL,
+                PRIMARY KEY (`idEnregistrement`),
+                KEY `idSepulture` (`idSepulture`),
+                CONSTRAINT `enregistrer_ibfk_2` FOREIGN KEY (`idSepulture`) REFERENCES `sepultures` (`idSepulture`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+            </pma:table>
         </pma:database>
     </pma:structure_schemas>
 
@@ -166,21 +175,21 @@
             <column name="coordX">43.639721</column>
             <column name="coordY">1.461595</column>
             <column name="idType">4</column>
-            <column name="idCimetiere">1</column>
+            <column name="idCimetiere">2</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">4</column>
             <column name="coordX">43.640018</column>
             <column name="coordY">1.460316</column>
             <column name="idType">4</column>
-            <column name="idCimetiere">3</column>
+            <column name="idCimetiere">2</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">5</column>
             <column name="coordX">43.640180</column>
             <column name="coordY">1.461811</column>
             <column name="idType">1</column>
-            <column name="idCimetiere">2</column>
+            <column name="idCimetiere">3</column>
         </table>
         <!-- Table typesepulture -->
         <table name="typesepulture">
@@ -202,6 +211,10 @@
         <table name="typesepulture">
             <column name="idType">5</column>
             <column name="libelle">columbarium</column>
+        </table>
+        <table name="enregistrer">
+            <column name="idEnregistrement">1</column>
+            <column name="idDefunt">2</column>
         </table>
     </database>
 </pma_xml_export>

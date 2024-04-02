@@ -21,6 +21,7 @@ object XmlParser {
             var currentCimetiere: Cimetiere? = null
             var currentDefunt: Defunt? = null
             var currentSepulture: Sepulture? = null
+            var currentEnregistrement: Enregistrement? = null
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 when (eventType) {
                     XmlPullParser.START_TAG -> {
@@ -45,6 +46,14 @@ object XmlParser {
                                         currentSepulture?.let {
                                             currentCimetiere?.let { cimetiere ->
                                                 cimetiere.sepulture.add(it)
+                                            }
+                                        }
+                                    }
+                                    "enregistrer" -> {
+                                        currentEnregistrement = parseEnregistrement(parser)
+                                        currentEnregistrement?.let {
+                                            currentCimetiere?.let { cimetiere ->
+                                                cimetiere.enregistrement.add(it)
                                             }
                                         }
                                     }
@@ -93,7 +102,26 @@ object XmlParser {
         return Defunt(id, nom, nomJeuneFille, prenom, dateNaissance, dateDeces, idSepulture)
     }
 
-
+    private fun parseEnregistrement(parser: XmlPullParser): Enregistrement {
+        var idEnregistrement = 0
+        var idDefunt = 0
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.eventType != XmlPullParser.START_TAG) {
+                continue
+            }
+            when (parser.name) {
+                "column" -> {
+                    val columnName = parser.getAttributeValue(null, "name")
+                    val columnValue = parser.nextText()
+                    when (columnName) {
+                        "idEnregistrement" -> idEnregistrement = columnValue.toInt()
+                        "idDefunt" -> idDefunt = columnValue.toInt()
+                    }
+                }
+            }
+        }
+        return Enregistrement(idEnregistrement, idDefunt)
+    }
 
     private fun parseCimetiere(parser: XmlPullParser): Cimetiere {
         var id = 0
@@ -101,6 +129,7 @@ object XmlParser {
         var rue = ""
         var ville = "Choisir une ville ..."
         var codePostal = 0
+        val enregistrements = mutableListOf<Int>()
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.eventType != XmlPullParser.START_TAG) {
                 continue
