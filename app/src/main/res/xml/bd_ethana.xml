@@ -106,8 +106,8 @@
             <column name="nom">BONNET</column>
             <column name="nomJeuneFille">MOREL</column>
             <column name="prenom">MARIE</column>
-            <column name="dateNaiss">1955-03-25</column>
-            <column name="dateDeces">2016-07-20</column>
+            <column name="dateNaiss">1880-03-25</column>
+            <column name="dateDeces">1952-07-20</column>
             <column name="sexe">Femme</column>
             <column name="idSepulture">1</column>
         </table>
@@ -116,8 +116,8 @@
             <column name="nom">DUPONT</column>
             <column name="nomJeuneFille">FONTAINE</column>
             <column name="prenom">Nathalie</column>
-            <column name="dateNaiss">1947-03-21</column>
-            <column name="dateDeces">1997-09-12</column>
+            <column name="dateNaiss">1917-03-21</column>
+            <column name="dateDeces">1972-09-12</column>
             <column name="sexe">Femme</column>
             <column name="idSepulture">2</column>
         </table>
@@ -127,7 +127,7 @@
             <column name="nomJeuneFille">NULL</column>
             <column name="prenom">Marc</column>
             <column name="dateNaiss">1945-11-19</column>
-            <column name="dateDeces">2006-08-11</column>
+            <column name="dateDeces">1996-08-11</column>
             <column name="sexe">Homme</column>
             <column name="idSepulture">2</column>
         </table>
@@ -136,8 +136,8 @@
             <column name="nom">LEROY</column>
             <column name="nomJeuneFille">NULL</column>
             <column name="prenom">Jean</column>
-            <column name="dateNaiss">1960-04-12</column>
-            <column name="dateDeces">2013-01-08</column>
+            <column name="dateNaiss">1902-04-12</column>
+            <column name="dateDeces">1976-01-08</column>
             <column name="sexe">Homme</column>
             <column name="idSepulture">5</column>
         </table>
@@ -146,8 +146,8 @@
             <column name="nom">MERCIER</column>
             <column name="nomJeuneFille">NULL</column>
             <column name="prenom">Michel</column>
-            <column name="dateNaiss">1990-02-17</column>
-            <column name="dateDeces">2023-09-03</column>
+            <column name="dateNaiss">1950-02-17</column>
+            <column name="dateDeces">2014-09-03</column>
             <column name="sexe">Homme</column>
             <column name="idSepulture">3</column>
         </table>
@@ -156,8 +156,8 @@
             <column name="nom">GARCIA</column>
             <column name="nomJeuneFille">CHEVALIER</column>
             <column name="prenom">Catherine</column>
-            <column name="dateNaiss">1951-06-12</column>
-            <column name="dateDeces">2019-05-24</column>
+            <column name="dateNaiss">1860-06-12</column>
+            <column name="dateDeces">1983-05-24</column>
             <column name="sexe">Femme</column>
             <column name="idSepulture">4</column>
         </table>
