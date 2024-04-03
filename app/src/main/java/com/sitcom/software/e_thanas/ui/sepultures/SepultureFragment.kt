@@ -3,11 +3,13 @@ package com.sitcom.software.e_thanas.ui.sepultures
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -29,6 +31,7 @@ class SepultureFragment : Fragment() {
     private lateinit var viewModel: SepultureViewModel
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
+    private lateinit var loadingProgressBar: ProgressBar
 
     private lateinit var sepultureLoc: GeoPoint
 
@@ -44,6 +47,7 @@ class SepultureFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sepulture, container, false)
         mMap = view.findViewById(R.id.osmmap)
+        loadingProgressBar = view.findViewById(R.id.loadingProgressBar)
 
         Configuration.getInstance().load(
             requireContext(),
@@ -79,6 +83,13 @@ class SepultureFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(SepultureViewModel::class.java)
         viewModel.getDefunts(requireContext())
+
+        Handler().postDelayed({
+            mMap.visibility = View.VISIBLE // Afficher la carte après 5 secondes
+            loadingProgressBar.visibility = View.GONE // Masquer la vue de chargement après 5 secondes
+        }, 3000)
+
+        loadingProgressBar.visibility = View.VISIBLE // Afficher la vue de chargement
 
         viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
             val defuntId = arguments?.getInt("id_defunt")
@@ -146,6 +157,7 @@ class SepultureFragment : Fragment() {
         }
     }
 
+
     private fun setupMap(sepultureLoc: GeoPoint) {
         mMyLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), mMap)
         mMyLocationOverlay.enableMyLocation()
@@ -156,8 +168,6 @@ class SepultureFragment : Fragment() {
         mMap.controller.animateTo(sepultureLoc) // Déplacer la carte vers la position du marqueur
         mMap.controller.zoomTo(18.0, null) // Appliquer un niveau de zoom adapté
     }
-
-
 
     private fun onBackButtonClicked(view: View) {
         findNavController().navigateUp()
