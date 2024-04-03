@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sitcom.software.e_thanas.classes.Cimetiere
 import com.sitcom.software.e_thanas.parser.XmlParser
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,6 +22,7 @@ class SearchViewModel : ViewModel() {
     // LiveData pour observer les changements dans les données
     private val _cimetieresLiveData = MutableLiveData<List<Cimetiere>>()
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun getCimetiereName(context: Context): LiveData<List<String>> {
         GlobalScope.launch(Dispatchers.IO) {
             val cimetieres = XmlParser.parseXml(context)
@@ -42,6 +44,7 @@ class SearchViewModel : ViewModel() {
         return dataCimetiereName
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun getCimetiereVille(context: Context): LiveData<List<String>> {
         GlobalScope.launch(Dispatchers.IO) {
             val cimetieres = XmlParser.parseXml(context)

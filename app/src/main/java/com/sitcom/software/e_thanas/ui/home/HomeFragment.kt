@@ -27,11 +27,11 @@ class HomeFragment : Fragment() {
 
         binding.btnLocaliser.setOnClickListener {
 
-            binding.btnLocaliser.isEnabled = false
-            // Naviguer vers le fragment de recherche
+
             findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
-            //Réinitialiser le bouton une fois cliqué pour pouvoir revenir à la page
-            binding.btnLocaliser.isEnabled = false
+
+
+
 
         }
         return root

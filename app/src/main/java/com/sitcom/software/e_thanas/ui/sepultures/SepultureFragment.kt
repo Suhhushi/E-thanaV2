@@ -115,6 +115,7 @@ class SepultureFragment : Fragment() {
                     marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                     mMap.overlays.add(marker1)
                     marker1.icon = mIcon
+                    marker1.title = "Localisation de la sépulture de ${defunt.prenom} ${defunt.nom}"
 
                     marker1.setOnMarkerClickListener { _, _ ->
                         marker1.showInfoWindow()
