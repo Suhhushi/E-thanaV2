@@ -1,7 +1,6 @@
 package com.sitcom.software.e_thanas.ui.sepultures
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -25,42 +24,35 @@ import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
-
-
-
 class SepultureFragment : Fragment() {
 
     private lateinit var viewModel: SepultureViewModel
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
 
+    private lateinit var sepultureLoc: GeoPoint
+
     private val centreFrance = GeoPoint(46.777036, 2.450763)
-    private val cimetiereCroixDaurade = GeoPoint(43.640124, 1.461586)
 
-
-    private var coordX : Double = 0.0
-    private var coordY : Double = 0.0
-
+    private var coordX: Double = 0.0
+    private var coordY: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? { val view = inflater.inflate(R.layout.fragment_sepulture, container, false)
-
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_sepulture, container, false)
         mMap = view.findViewById(R.id.osmmap)
 
-        // Initialisation de la configuration d'OSMDroid
         Configuration.getInstance().load(
             requireContext(),
             requireActivity().getSharedPreferences("MyPrefs", 0)
         )
 
-        // Configuration de la carte
         mMap.setTileSource(TileSourceFactory.MAPNIK)
         mMap.setMultiTouchControls(true)
 
-        // Vérifier les autorisations de localisation
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -70,7 +62,6 @@ class SepultureFragment : Fragment() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // Demander les autorisations de localisation si elles ne sont pas accordées
             ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(
@@ -79,10 +70,6 @@ class SepultureFragment : Fragment() {
                 ),
                 CimetieresFragment.PERMISSION_REQUEST_CODE
             )
-        } else {
-
-            // Autorisations de localisation déjà accordées
-            setupMap()
         }
 
         return view
@@ -90,158 +77,92 @@ class SepultureFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Initialisez votre ViewModel ici
         viewModel = ViewModelProvider(this).get(SepultureViewModel::class.java)
-
         viewModel.getDefunts(requireContext())
 
-        // Observer pour écouter les changements dans la liste des défunts
         viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
-            // Récupérer l'ID du défunt depuis les arguments
             val defuntId = arguments?.getInt("id_defunt")
-
-            Log.d("SepultureFragment", "ID du défunt: $defuntId")
-
-            // Récupérer le défunt correspondant à l'ID
             val defunt = defunts.find { it.id == defuntId }
 
             if (defunt != null) {
-                // Afficher les détails du défunt dans le logcat
-                Log.d("SepultureFragment", "Défunt trouvé : $defunt")
-
                 val textViewNomJF = view.findViewById<TextView>(R.id.textViewNomJF)
                 val textViewPrenom = view.findViewById<TextView>(R.id.textViewPrenom)
                 val textViewNom = view.findViewById<TextView>(R.id.textViewNom)
 
-                // Assurez-vous que textViewNomJF est initialisé en tant que Gone si nécessaire
                 textViewNomJF.visibility = View.GONE
-
                 textViewPrenom.text = defunt.prenom
                 textViewNom.text = defunt.nom
+
                 if (defunt.nomJeuneFille != "NULL") {
                     textViewNomJF.text = defunt.nomJeuneFille
                     textViewNomJF.visibility = View.VISIBLE
                 }
 
-
-                // Récupérer et afficher la liste des sépultures dans le logcat
                 viewModel.getSepulture(requireContext())
                 viewModel.sepulture.observe(viewLifecycleOwner, Observer { sepultures ->
-
                     val sepulture = sepultures.find { it.id == defunt.idSepulture}
-                    Log.d("SepultureFragment", "La sépultures : $sepulture")
 
-                    coordX = sepulture?.coordX?.toDouble()!! //pour la map
+                    coordX = sepulture?.coordX?.toDouble()!!
                     coordY = sepulture?.coordY?.toDouble()!!
 
-                    //Changement du modèle du marker de cimetière
                     val mIcon = resources.getDrawable(R.drawable.baseline_location_pin_24)
+                    val sepultureLoc = GeoPoint(coordX, coordY)
 
-                    var sepultureLoc = GeoPoint(coordX, coordY)
-                    var sepultureLoc2 = GeoPoint(coordX + 0.3, coordY + 0.3)
+                    setupMap(sepultureLoc) // Passer sepultureLoc à setupMap()
 
-                    mMap.controller.animateTo(sepultureLoc)
-                    mMap.controller.animateTo(sepultureLoc2)
-
-                    // Ajouter un marqueur pour le cimetière de Croix Daurade
                     val marker1 = Marker(mMap)
-                    val marker2 = Marker(mMap)
-
                     marker1.position = sepultureLoc
                     marker1.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                     mMap.overlays.add(marker1)
                     marker1.icon = mIcon
 
-                    marker2.position = sepultureLoc2
-                    marker2.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-                    mMap.overlays.add(marker2)
-                    marker2.icon = mIcon
-
-                    // Après avoir ajouté vos marqueurs sur la carte
-                    viewModel.drawRoute(mMap, sepultureLoc, sepultureLoc2)
-
                     marker1.setOnMarkerClickListener { _, _ ->
-
                         marker1.showInfoWindow()
                         true
                     }
 
-
-
-                    Log.d("SepultureFragment", "La coordonnées : $coordX , $coordY")
-
-
-
-                    // Récupérer et afficher la liste des cimetières dans le logcat
                     viewModel.getCimetieres(requireContext())
                     viewModel.cimetieres.observe(viewLifecycleOwner, Observer { cimetieres ->
-
                         val cimetiere = cimetieres.find { it.id == sepulture?.idCimetiere }
 
                         view.findViewById<TextView>(R.id.textViewVille).text = cimetiere?.ville
                         view.findViewById<TextView>(R.id.textViewCimetiere).text = cimetiere?.nom
-
                     })
                 })
             } else {
                 Log.e("SepultureFragment", "Défunt non trouvé avec l'ID $defuntId")
             }
-
         })
 
-        // Trouvez le bouton de retour par son ID
         val backButton: ImageButton = view.findViewById(R.id.btnBack)
-        val favButtonImg : ImageButton = view.findViewById(R.id.btnFav)
-
-        // Définissez le OnClickListener pour le bouton de retour
         backButton.setOnClickListener {
-            // Appel de la fonction onBackButtonClicked lorsque le bouton est cliqué
             onBackButtonClicked(it)
         }
 
+        val favButtonImg: ImageButton = view.findViewById(R.id.btnFav)
         favButtonImg.setOnClickListener{
             onFavButtonClicked(it)
+        }
     }
 
-    }
-
-
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun setupMap() {
-
-        // Ajouter l'overlay de la localisation de l'utilisateur
+    private fun setupMap(sepultureLoc: GeoPoint) {
         mMyLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(requireContext()), mMap)
         mMyLocationOverlay.enableMyLocation()
         mMyLocationOverlay.enableFollowLocation()
         mMap.overlays.add(mMyLocationOverlay)
-        mMap.controller.setZoom(17.6)
-        //Faire en sorte que l'icone soit plus grande
 
-
-
-        mMyLocationOverlay.runOnFirstFix {
-            requireActivity().runOnUiThread {
-                val userLocation = mMyLocationOverlay.myLocation
-
-            }
-        }
-
+        mMap.controller.setZoom(20)
+        mMap.controller.animateTo(sepultureLoc) // Déplacer la carte vers la position du marqueur
+        mMap.controller.zoomTo(18.0, null) // Appliquer un niveau de zoom adapté
     }
 
 
-    fun onBackButtonClicked(view: View) {
+
+    private fun onBackButtonClicked(view: View) {
         findNavController().navigateUp()
     }
 
     private fun onFavButtonClicked(it: View?) {
-
-
+        // Placeholder for favorite button click handling
     }
-
-
 }
-
-
-

@@ -76,6 +76,7 @@ object XmlParser {
         var nom = ""
         var nomJeuneFille = ""
         var prenom = ""
+        var sexe = ""
         var dateNaissance = "" // Modification pour accepter les valeurs nullables
         var dateDeces = "" // Modification pour accepter les valeurs nullables
         var idSepulture = 0
@@ -95,11 +96,12 @@ object XmlParser {
                         "dateNaiss" -> dateNaissance = columnValue
                         "dateDeces" -> dateDeces = columnValue
                         "idSepulture" -> idSepulture = columnValue.toInt()
+                        "sexe" -> sexe = columnValue
                     }
                 }
             }
         }
-        return Defunt(id, nom, nomJeuneFille, prenom, dateNaissance, dateDeces, idSepulture)
+        return Defunt(id, nom, nomJeuneFille, prenom, dateNaissance, dateDeces, sexe, idSepulture)
     }
 
     private fun parseEnregistrement(parser: XmlPullParser): Enregistrement {

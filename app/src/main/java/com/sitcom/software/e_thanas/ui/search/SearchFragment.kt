@@ -96,18 +96,19 @@ class SearchFragment : Fragment() {
         // Supposons que vous avez un bouton nommé btnSearch dans votre layout XML
 
         binding.btnRechercher.setOnClickListener {
-            // Lorsque l'utilisateur appuie sur le bouton de recherche
-            val cimetiereSelected = searchViewModel.normalizeInput(binding.spinnerCimetiere.selectedItem.toString(), capitalizeFirstName = true)
-            val villeSelected = searchViewModel.normalizeInput(binding.spinnerVille.selectedItem.toString(), capitalizeFirstName = true)
             val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString())
             val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
+            val genre = searchViewModel.normalizeInput(binding.spinnerSexe.selectedItem.toString(), capitalizeFirstName = true)
+            val nomJF = searchViewModel.normalizeInput(binding.editTextNomJeuneFille.text.toString(), capitalizeFirstName = true)
 
 
             val bundle = Bundle()
-            bundle.putString("cimetiere", cimetiereSelected)
-            bundle.putString("ville", villeSelected)
             bundle.putString("nom", nom)
             bundle.putString("prenom", prenom)
+            bundle.putString("genre", genre)
+            bundle.putString("nomJF", nomJF)
+
+
 
             findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
         }

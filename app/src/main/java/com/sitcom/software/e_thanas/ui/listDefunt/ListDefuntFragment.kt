@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sitcom.software.e_thanas.R
+import com.sitcom.software.e_thanas.classes.Cimetiere
+import com.sitcom.software.e_thanas.classes.Sepulture
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.Marker
 
 class ListDefuntFragment : Fragment() {
 
@@ -36,49 +41,46 @@ class ListDefuntFragment : Fragment() {
 
         // Observer les changements de la LiveData contenant la liste des défunts
         viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
-            // Afficher la liste des défunts dans le logcat
+            // Récupérer les données passées par le Bundle
             val nom = arguments?.getString("nom")
             val prenom = arguments?.getString("prenom")
+            val nomJF = arguments?.getString("nomJF")
+            val genre = arguments?.getString("genre")
 
 
             var defuntsFiltres = defunts.filter { defunt ->
-                defunt.nom == nom && defunt.prenom == prenom && defunt.id != 0
+                (nom.isNullOrBlank() || defunt.nom.equals(nom, ignoreCase = true)) &&
+                        (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
+                        (nomJF.isNullOrBlank() || defunt.nomJeuneFille.equals(nomJF, ignoreCase = true)) &&
+                        (genre.isNullOrBlank() || defunt.sexe.equals(genre, ignoreCase = true)) &&
+                        (defunt.id != 0)
             }
-            if(defuntsFiltres.isEmpty() || nom.isNullOrEmpty()){
+
+            // Si aucun résultat n'est trouvé, utilisez une liste non filtrée
+            if (defuntsFiltres.isEmpty()) {
                 defuntsFiltres = defunts.filter { defunt ->
-                    defunt.prenom == prenom && defunt.id != 0
+                    (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
+                            (defunt.id != 0)
                 }
             }
-            if(defuntsFiltres.isEmpty() || prenom.isNullOrEmpty()){
-                defuntsFiltres = defunts.filter { defunt ->
-                    defunt.nom == nom && defunt.id != 0
-                }
-            }
 
-
-
-            for (defunt in defuntsFiltres) {
-                Log.d("ListDefuntFragment", "Defunt: $defunt")
-                // Afficher ou manipuler les défunts filtrés comme nécessaire
-
-            }
             // Initialisez votre RecyclerView
             val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewDefunts)
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             // Créez l'adaptateur pour votre RecyclerView
-            val adapter = DefuntAdapter(defuntsFiltres) // Utilisez la liste filtrée de défunts
+            val adapter = DefuntAdapter(defuntsFiltres)
             recyclerView.adapter = adapter
         })
+
 
         // Récupérer les données passées par le Bundle
         val nom = arguments?.getString("nom")
         val prenom = arguments?.getString("prenom")
 
 
-
         // Utilisez les données récupérées comme vous le souhaitez
-        Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom")
+        Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom,")
 
         // Mettez en place votre RecyclerView ou d'autres éléments de votre fragment ici
 
@@ -98,5 +100,3 @@ class ListDefuntFragment : Fragment() {
         findNavController().navigateUp()
     }
 }
-
-

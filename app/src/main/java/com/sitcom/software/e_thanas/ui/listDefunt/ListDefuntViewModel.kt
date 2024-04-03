@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sitcom.software.e_thanas.classes.Cimetiere
 import com.sitcom.software.e_thanas.classes.Defunt
+import com.sitcom.software.e_thanas.classes.Sepulture
 import com.sitcom.software.e_thanas.parser.XmlParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
