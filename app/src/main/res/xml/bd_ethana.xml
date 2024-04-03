@@ -164,8 +164,8 @@
         <!-- Table sepultures -->
         <table name="sepultures">
             <column name="idSepulture">1</column>
-            <column name="coordX">43.640180</column>
-            <column name="coordY">1.460854</column>
+            <column name="coordX">43.639843</column>
+            <column name="coordY">1.461485</column>
             <column name="idType">1</column>
             <column name="idCimetiere">1</column>
         </table>
@@ -178,22 +178,22 @@
         </table>
         <table name="sepultures">
             <column name="idSepulture">3</column>
-            <column name="coordX">43.639721</column>
-            <column name="coordY">1.461595</column>
+            <column name="coordX">43.591097</column>
+            <column name="coordY">1.427660</column>
             <column name="idType">4</column>
             <column name="idCimetiere">2</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">4</column>
-            <column name="coordX">43.640018</column>
-            <column name="coordY">1.460316</column>
+            <column name="coordX">43.591483</column>
+            <column name="coordY">1.426074</column>
             <column name="idType">4</column>
             <column name="idCimetiere">2</column>
         </table>
         <table name="sepultures">
             <column name="idSepulture">5</column>
-            <column name="coordX">43.640180</column>
-            <column name="coordY">1.461811</column>
+            <column name="coordX">43.607220</column>
+            <column name="coordY">1.463822</column>
             <column name="idType">1</column>
             <column name="idCimetiere">3</column>
         </table>
