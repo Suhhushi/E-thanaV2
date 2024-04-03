@@ -155,7 +155,14 @@ class SepultureFragment : Fragment() {
         favButtonImg.setOnClickListener{
             onFavButtonClicked(it)
         }
+
+        val returnToSearchButton: ImageButton = view.findViewById(R.id.btnRetourSearch)
+        returnToSearchButton.setOnClickListener {
+            onReturnToSearchButtonClicked(it)
     }
+
+
+}
 
 
     private fun setupMap(sepultureLoc: GeoPoint) {
@@ -164,14 +171,20 @@ class SepultureFragment : Fragment() {
         mMyLocationOverlay.enableFollowLocation()
         mMap.overlays.add(mMyLocationOverlay)
 
-        mMap.controller.setZoom(20)
+        mMap.controller.setZoom(17.4)
         mMap.controller.animateTo(sepultureLoc) // Déplacer la carte vers la position du marqueur
-        mMap.controller.zoomTo(18.0, null) // Appliquer un niveau de zoom adapté
+        mMap.controller.zoomTo(17.4, null) // Appliquer un niveau de zoom adapté
     }
 
     private fun onBackButtonClicked(view: View) {
         findNavController().navigateUp()
     }
+
+    private fun onReturnToSearchButtonClicked(view: View) {
+        findNavController().popBackStack()
+        findNavController().popBackStack()
+    }
+
 
     private fun onFavButtonClicked(it: View?) {
         // Placeholder for favorite button click handling

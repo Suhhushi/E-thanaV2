@@ -61,7 +61,7 @@ class ListDefuntFragment : Fragment() {
                 (nom.isNullOrBlank() || defunt.nom.equals(nom, ignoreCase = true)) &&
                         (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
                         (nomJF.isNullOrBlank() || defunt.nomJeuneFille.equals(nomJF, ignoreCase = true)) &&
-                        (genre == "Genre" || defunt.sexe.equals(genre, ignoreCase = true)) &&
+                        (genre == "Civilité" || defunt.sexe.equals(genre, ignoreCase = true)) &&
                         (defunt.id != 0)
             }
 

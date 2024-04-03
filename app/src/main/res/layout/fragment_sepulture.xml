@@ -84,7 +84,7 @@
                         <LinearLayout
                             android:layout_width="151dp"
                             android:layout_height="221dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/rounded_corners2"
                             android:gravity="center"
@@ -161,6 +161,17 @@
                             android:orientation="horizontal">
 
                             <ImageButton
+                                android:id="@+id/btnRetourSearch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|end"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/rounded_corners"
+                                android:padding="10dp"
+                                android:src="@drawable/baseline_search_24" />
+
+                            <ImageButton
                                 android:id="@+id/btnFav"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -168,7 +179,7 @@
                                 android:layout_marginTop="16dp"
                                 android:layout_marginEnd="16dp"
                                 android:background="@drawable/rounded_corners"
-                                android:padding="12dp"
+                                android:padding="10dp"
                                 android:src="@drawable/baseline_star_border_24" />
 
                             <ImageButton
@@ -180,7 +191,7 @@
                                 android:layout_marginEnd="16dp"
                                 android:background="@drawable/rounded_corners"
                                 android:onClick="onBackButtonClicked"
-                                android:padding="12dp"
+                                android:padding="10dp"
                                 android:src="@drawable/ic_back_button"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />

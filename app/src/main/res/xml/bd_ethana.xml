@@ -106,9 +106,9 @@
             <column name="nom">BONNET</column>
             <column name="nomJeuneFille">MOREL</column>
             <column name="prenom">MARIE</column>
-            <column name="dateNaiss">1880-03-25</column>
-            <column name="dateDeces">1952-07-20</column>
-            <column name="sexe">Femme</column>
+            <column name="dateNaiss">1895-02-14</column>
+            <column name="dateDeces">1970-08-06</column>
+            <column name="sexe">Madame</column>
             <column name="idSepulture">1</column>
         </table>
         <table name="defunts">
@@ -118,7 +118,7 @@
             <column name="prenom">Nathalie</column>
             <column name="dateNaiss">1917-03-21</column>
             <column name="dateDeces">1972-09-12</column>
-            <column name="sexe">Femme</column>
+            <column name="sexe">Madame</column>
             <column name="idSepulture">2</column>
         </table>
         <table name="defunts">
@@ -128,7 +128,7 @@
             <column name="prenom">Marc</column>
             <column name="dateNaiss">1945-11-19</column>
             <column name="dateDeces">1996-08-11</column>
-            <column name="sexe">Homme</column>
+            <column name="sexe">Monsieur</column>
             <column name="idSepulture">2</column>
         </table>
         <table name="defunts">
@@ -138,7 +138,7 @@
             <column name="prenom">Jean</column>
             <column name="dateNaiss">1902-04-12</column>
             <column name="dateDeces">1976-01-08</column>
-            <column name="sexe">Homme</column>
+            <column name="sexe">Monsieur</column>
             <column name="idSepulture">5</column>
         </table>
         <table name="defunts">
@@ -148,7 +148,7 @@
             <column name="prenom">Michel</column>
             <column name="dateNaiss">1950-02-17</column>
             <column name="dateDeces">2014-09-03</column>
-            <column name="sexe">Homme</column>
+            <column name="sexe">Monsieur</column>
             <column name="idSepulture">3</column>
         </table>
         <table name="defunts">
@@ -158,7 +158,7 @@
             <column name="prenom">Catherine</column>
             <column name="dateNaiss">1860-06-12</column>
             <column name="dateDeces">1983-05-24</column>
-            <column name="sexe">Femme</column>
+            <column name="sexe">Madame</column>
             <column name="idSepulture">4</column>
         </table>
         <!-- Table sepultures -->
