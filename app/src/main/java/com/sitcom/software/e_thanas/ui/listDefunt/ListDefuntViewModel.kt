@@ -18,32 +18,10 @@ class ListDefuntViewModel : ViewModel() {
     val defunts: LiveData<List<Defunt>>
         get() = _defunts
 
-    private val _sepulture = MutableLiveData<List<Sepulture>>()
-    val sepulture: LiveData<List<Sepulture>>
-        get() = _sepulture
-
-    private val _cimetieres = MutableLiveData<List<Cimetiere>>()
-    val cimetieres: LiveData<List<Cimetiere>>
-        get() = _cimetieres
-
     fun getDefunts(context: Context) {
         GlobalScope.launch(Dispatchers.IO) {
             val defuntsList = XmlParser.parseXml(context).flatMap { it.defunts }
             _defunts.postValue(defuntsList)
-        }
-    }
-
-    fun getSepulture(context: Context) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val sepultureList = XmlParser.parseXml(context).flatMap { it.sepulture }
-            _sepulture.postValue(sepultureList)
-        }
-    }
-
-    fun getCimetieres(context: Context) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val cimetieresList = XmlParser.parseXml(context)
-            _cimetieres.postValue(cimetieresList)
         }
     }
 

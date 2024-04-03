@@ -22,7 +22,6 @@ import org.osmdroid.views.overlay.Marker
 class ListDefuntFragment : Fragment() {
 
     private lateinit var viewModel: ListDefuntViewModel
-    private var cimetiereTrouve: Cimetiere? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +39,6 @@ class ListDefuntFragment : Fragment() {
         // Appel de la fonction pour récupérer tous les défunts
         viewModel.getDefunts(requireContext())
 
-        // Appel de la fonction pour récupérer toutes les sépultures
-        viewModel.getSepulture(requireContext())
-
-        // Appel de la fonction pour récupérer tous les cimetières
-        viewModel.getCimetieres(requireContext())
-
         // Observer les changements de la LiveData contenant la liste des défunts
         viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
             // Récupérer les données passées par le Bundle
@@ -53,10 +46,8 @@ class ListDefuntFragment : Fragment() {
             val prenom = arguments?.getString("prenom")
             val nomJF = arguments?.getString("nomJF")
             val genre = arguments?.getString("genre")
-            val ville = arguments?.getString("ville")
-            val cimetiereNom = arguments?.getString("cimetiere")
 
-            // Filtrer les défunts en fonction des critères de recherche
+
             var defuntsFiltres = defunts.filter { defunt ->
                 (nom.isNullOrBlank() || defunt.nom.equals(nom, ignoreCase = true)) &&
                         (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
@@ -72,13 +63,6 @@ class ListDefuntFragment : Fragment() {
                             (defunt.id != 0)
                 }
             }
-
-            // Observer les changements de la LiveData contenant la liste des cimetières
-            viewModel.cimetieres.observe(viewLifecycleOwner, Observer { cimetieres ->
-                // Trouver le cimetière correspondant au nom spécifié
-                cimetiereTrouve = cimetieres.find { it.nom.equals(cimetiereNom, ignoreCase = true) }
-                // Vous pouvez maintenant utiliser la variable cimetiereTrouve pour accéder au cimetière trouvé
-            })
 
             // Initialisez votre RecyclerView
             val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewDefunts)
@@ -96,7 +80,7 @@ class ListDefuntFragment : Fragment() {
 
 
         // Utilisez les données récupérées comme vous le souhaitez
-        Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom")
+        Log.d("ListDefuntFragment", "Nom: $nom, Prenom: $prenom,")
 
         // Mettez en place votre RecyclerView ou d'autres éléments de votre fragment ici
 
