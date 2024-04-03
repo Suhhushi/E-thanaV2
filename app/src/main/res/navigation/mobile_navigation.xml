@@ -31,7 +31,11 @@
         android:id="@+id/navigation_favoris"
         android:name="com.sitcom.software.e_thanas.ui.favoris.FavorisFragment"
         android:label="@string/title_favoris"
-        tools:layout="@layout/fragment_favoris" />
+        tools:layout="@layout/fragment_favoris" >
+        <action
+            android:id="@+id/action_navigation_favoris_to_navigation_sepulture2"
+            app:destination="@id/navigation_sepulture" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_account"
