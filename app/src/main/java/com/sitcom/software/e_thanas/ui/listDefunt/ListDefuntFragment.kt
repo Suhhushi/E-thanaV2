@@ -40,7 +40,7 @@ class ListDefuntFragment : Fragment() {
         viewModel.getDefunts(requireContext())
 
         // Observer les changements de la LiveData contenant la liste des défunts
-        viewModel.defunts.observe(viewLifecycleOwner, Observer { defunts ->
+        viewModel.defunts.observe(viewLifecycleOwner, { defunts ->
             // Récupérer les données passées par le Bundle
             val nom = arguments?.getString("nom")
             val prenom = arguments?.getString("prenom")
@@ -49,17 +49,17 @@ class ListDefuntFragment : Fragment() {
 
 
             var defuntsFiltres = defunts.filter { defunt ->
-                (nom.isNullOrBlank() || defunt.nom.equals(nom, ignoreCase = true)) &&
-                        (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
-                        (nomJF.isNullOrBlank() || defunt.nomJeuneFille.equals(nomJF, ignoreCase = true)) &&
-                        (genre.isNullOrBlank() || defunt.sexe.equals(genre, ignoreCase = true)) &&
+                (nom.isNullOrEmpty() || defunt.nom.equals(nom, ignoreCase = true)) &&
+                        (prenom.isNullOrEmpty() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
+                        (nomJF.isNullOrEmpty() || defunt.nomJeuneFille.equals(nomJF, ignoreCase = true)) &&
+                        (genre == "Genre" || defunt.sexe.equals(genre, ignoreCase = true)) &&
                         (defunt.id != 0)
             }
 
             // Si aucun résultat n'est trouvé, utilisez une liste non filtrée
             if (defuntsFiltres.isEmpty()) {
                 defuntsFiltres = defunts.filter { defunt ->
-                    (prenom.isNullOrBlank() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
+                    (prenom.isNullOrEmpty() || defunt.prenom.equals(prenom, ignoreCase = true)) &&
                             (defunt.id != 0)
                 }
             }

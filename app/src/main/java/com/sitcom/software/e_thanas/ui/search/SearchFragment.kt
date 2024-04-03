@@ -96,7 +96,7 @@ class SearchFragment : Fragment() {
         // Supposons que vous avez un bouton nommé btnSearch dans votre layout XML
 
         binding.btnRechercher.setOnClickListener {
-            val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString())
+            val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString(), capitalizeFirstName = true)
             val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
             val genre = searchViewModel.normalizeInput(binding.spinnerSexe.selectedItem.toString(), capitalizeFirstName = true)
             val nomJF = searchViewModel.normalizeInput(binding.editTextNomJeuneFille.text.toString(), capitalizeFirstName = true)

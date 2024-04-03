@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
 
                     android:gravity="center"
-                    android:text="BENHAMOU Richard"
+                    android:text="PINOT Lucie"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
             </LinearLayout>
