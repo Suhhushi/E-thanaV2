@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sitcom.software.e_thanas.databinding.FragmentSearchBinding
 import com.sitcom.software.e_thanas.R
-
+import com.sitcom.software.e_thanas.classes.Cimetiere
 
 
 class SearchFragment : Fragment() {
@@ -100,13 +100,14 @@ class SearchFragment : Fragment() {
             val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
             val genre = searchViewModel.normalizeInput(binding.spinnerSexe.selectedItem.toString(), capitalizeFirstName = true)
             val nomJF = searchViewModel.normalizeInput(binding.editTextNomJeuneFille.text.toString(), capitalizeFirstName = true)
-
+            val Cimetiere = searchViewModel.normalizeInput(binding.spinnerCimetiere.selectedItem.toString())
 
             val bundle = Bundle()
             bundle.putString("nom", nom)
             bundle.putString("prenom", prenom)
             bundle.putString("genre", genre)
             bundle.putString("nomJF", nomJF)
+            bundle.putString("Cimetiere", Cimetiere)
 
 
 
