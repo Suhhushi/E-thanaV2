@@ -164,8 +164,8 @@
         <!-- Table sepultures -->
         <table name="sepultures">
             <column name="idSepulture">1</column>
-            <column name="coordX">43.38270</column>
-            <column name="coordY">1.27384</column>
+            <column name="coordX">43.640180</column>
+            <column name="coordY">1.460854</column>
             <column name="idType">1</column>
             <column name="idCimetiere">1</column>
         </table>
