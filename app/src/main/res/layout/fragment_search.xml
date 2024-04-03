@@ -114,6 +114,7 @@
                                 android:background="@drawable/spinner_border"
                                 android:hint="Nom de jeune fille"
                                 android:paddingLeft="10dp"
+                                android:textColor="@color/black"
                                 android:textColorHint="@color/black" />
                         </LinearLayout>
 
