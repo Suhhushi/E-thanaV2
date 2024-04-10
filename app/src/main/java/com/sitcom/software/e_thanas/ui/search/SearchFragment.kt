@@ -80,7 +80,7 @@ class SearchFragment : Fragment() {
                 id: Long
             ) {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
-                if(selectedItem == "Femme"){
+                if(selectedItem == "Madame"){
                     binding.conditionalLayout.visibility = View.VISIBLE
                 }else{
                     binding.conditionalLayout.visibility = View.GONE
