@@ -135,6 +135,19 @@ class SearchFragment : Fragment() {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Effacer les champs de texte
+        binding.editTextNom.text.clear()
+        binding.editTextPrenom.text.clear()
+        binding.editTextNomJeuneFille.text.clear()
+
+        // Réinitialiser les sélections des spinners
+        binding.spinnerSexe.setSelection(0)
+        binding.spinnerCimetiere.setSelection(0)
+        binding.spinnerVille.setSelection(0)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
