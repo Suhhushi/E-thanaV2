@@ -21,11 +21,10 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/baseline_home_24"
-        android:iconTint="@color/black"
+        android:icon="@drawable/img_logo"
         android:title="@string/title_home"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black" />
+        android:enabled="false"
+        app:iconTint="@color/bleu_ciel"/>
 
 
     <item

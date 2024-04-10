@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,16 +35,6 @@ class SearchFragment : Fragment() {
 
         // Initialiser la ViewModel
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-
-        // Effacer les champs de texte
-        binding.editTextNom.text.clear()
-        binding.editTextPrenom.text.clear()
-        binding.editTextNomJeuneFille.text.clear()
-
-        // Réinitialiser les sélections des spinners
-        binding.spinnerSexe.setSelection(0)
-        binding.spinnerCimetiere.setSelection(0)
-        binding.spinnerVille.setSelection(0)
 
         // Observer pour surveiller les changements dans les données
         searchViewModel.getData().observe(viewLifecycleOwner, Observer { options ->
@@ -102,41 +93,48 @@ class SearchFragment : Fragment() {
             }
         }
 
-        // Dans SearchFragment, dans la méthode onCreateView ou ailleurs approprié
-        // Supposons que vous avez un bouton nommé btnSearch dans votre layout XML
-
         binding.btnRechercher.setOnClickListener {
             val nom = searchViewModel.normalizeInput(binding.editTextNom.text.toString(), capitalizeFirstName = true)
             val prenom = searchViewModel.normalizeInput(binding.editTextPrenom.text.toString(), capitalizeFirstName = true)
             val genre = searchViewModel.normalizeInput(binding.spinnerSexe.selectedItem.toString(), capitalizeFirstName = true)
             val nomJF = searchViewModel.normalizeInput(binding.editTextNomJeuneFille.text.toString(), capitalizeFirstName = true)
-            val Cimetiere = searchViewModel.normalizeInput(binding.spinnerCimetiere.selectedItem.toString())
+            val cimetiere = searchViewModel.normalizeInput(binding.spinnerCimetiere.selectedItem.toString())
 
-            val bundle = Bundle()
-            bundle.putString("nom", nom)
-            bundle.putString("prenom", prenom)
-            bundle.putString("genre", genre)
-            bundle.putString("nomJF", nomJF)
-            bundle.putString("Cimetiere", Cimetiere)
+            // Compteur de champs saisis
+            var fieldsFilledCount = 0
 
-            findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
+            // Vérifier si chaque champ est saisi
+            if (nom.isNotEmpty()) fieldsFilledCount++
+            if (prenom.isNotEmpty()) fieldsFilledCount++
+            if (binding.spinnerSexe.selectedItemPosition != 0) fieldsFilledCount++
+            if (nomJF.isNotEmpty()) fieldsFilledCount++
+            if (binding.spinnerCimetiere.selectedItemPosition != 0) fieldsFilledCount++
+
+            // Vérifier si au moins deux champs sont saisis
+            if (fieldsFilledCount < 2) {
+                // Afficher le pop-up indiquant à l'utilisateur de saisir au moins deux champs
+                // Remplacez "requireContext()" par le context approprié pour afficher la popup
+                // Vous pouvez utiliser AlertDialog ou Toast pour afficher le message
+                // Exemple d'utilisation de Toast :
+                Toast.makeText(requireContext(), "Veuillez saisir au moins deux champs", Toast.LENGTH_SHORT).show()
+            } else {
+                // Au moins deux champs sont saisis, naviguer vers la prochaine destination
+                val bundle = Bundle()
+                bundle.putString("nom", nom)
+                bundle.putString("prenom", prenom)
+                bundle.putString("genre", genre)
+                bundle.putString("nomJF", nomJF)
+                bundle.putString("Cimetiere", cimetiere)
+
+                findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
+            }
         }
+
+
 
         return root
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Effacer les champs de texte
-        binding.editTextNom.text.clear()
-        binding.editTextPrenom.text.clear()
-        binding.editTextNomJeuneFille.text.clear()
-
-        // Réinitialiser les sélections des spinners
-        binding.spinnerSexe.setSelection(0)
-        binding.spinnerCimetiere.setSelection(0)
-        binding.spinnerVille.setSelection(0)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

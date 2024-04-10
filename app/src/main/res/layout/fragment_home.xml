@@ -44,6 +44,25 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btnLocaliser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:radius="30dp"
+                android:stateListAnimator="@null"
+                android:text="LOCALISER"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:icon="@android:drawable/ic_menu_mylocation"
+                app:iconTint="@color/black" />
         </LinearLayout>
     </LinearLayout>
 
