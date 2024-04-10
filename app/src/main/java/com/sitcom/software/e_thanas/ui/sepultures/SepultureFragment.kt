@@ -177,7 +177,8 @@ class SepultureFragment : Fragment() {
     }
 
     private fun onBackButtonClicked(view: View) {
-        findNavController().navigateUp()
+        findNavController().popBackStack()
+        findNavController().popBackStack()
     }
 
     private fun onReturnToSearchButtonClicked(view: View) {
