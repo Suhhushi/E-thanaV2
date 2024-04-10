@@ -20,7 +20,7 @@ class FavorisAdapter(private val defuntList: List<Defunt>) : RecyclerView.Adapte
                     putInt("id_defunt", defunt.id) // ID du défunt sélectionné
                     // Ajoutez d'autres données du défunt à passer si nécessaire
                 }
-                itemView.findNavController().navigate(R.id.action_navigation_favoris_to_sepultureFragment2, bundle)
+                itemView.findNavController().navigate(R.id.action_navigation_favoris_to_navigation_sepulture, bundle)
             }
         }
     }
