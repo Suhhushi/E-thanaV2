@@ -35,6 +35,16 @@ class SearchFragment : Fragment() {
         // Initialiser la ViewModel
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
 
+        // Effacer les champs de texte
+        binding.editTextNom.text.clear()
+        binding.editTextPrenom.text.clear()
+        binding.editTextNomJeuneFille.text.clear()
+
+        // Réinitialiser les sélections des spinners
+        binding.spinnerSexe.setSelection(0)
+        binding.spinnerCimetiere.setSelection(0)
+        binding.spinnerVille.setSelection(0)
+
         // Observer pour surveiller les changements dans les données
         searchViewModel.getData().observe(viewLifecycleOwner, Observer { options ->
             if (options != null && options.isNotEmpty()) {
@@ -108,8 +118,6 @@ class SearchFragment : Fragment() {
             bundle.putString("genre", genre)
             bundle.putString("nomJF", nomJF)
             bundle.putString("Cimetiere", Cimetiere)
-
-
 
             findNavController().navigate(R.id.action_navigation_search_to_listDefuntFragment, bundle)
         }

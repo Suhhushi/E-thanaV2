@@ -25,15 +25,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnLocaliser.setOnClickListener {
-
-
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_search)
-
-
-
-
-        }
         return root
     }
 

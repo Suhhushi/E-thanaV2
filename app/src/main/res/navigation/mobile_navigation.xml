@@ -33,8 +33,8 @@
         android:label="@string/title_favoris"
         tools:layout="@layout/fragment_favoris" >
         <action
-            android:id="@+id/action_navigation_favoris_to_navigation_sepulture2"
-            app:destination="@id/navigation_sepulture" />
+            android:id="@+id/action_navigation_favoris_to_sepultureFragment2"
+            app:destination="@id/sepultureFragment2" />
     </fragment>
 
     <fragment
@@ -64,7 +64,11 @@
         android:id="@+id/navigation_sepulture"
         android:name="com.sitcom.software.e_thanas.ui.sepultures.SepultureFragment"
         android:label="@string/title_sepulture"
-        tools:layout="@layout/fragment_sepulture" />
+        tools:layout="@layout/fragment_sepulture" >
+        <action
+            android:id="@+id/action_navigation_sepulture_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/listDefuntFragment"
@@ -75,7 +79,11 @@
         android:id="@+id/action_listDefuntFragment_to_sepultureFragment"
         app:destination="@id/navigation_sepulture" />
     </fragment>
-
+    <fragment
+        android:id="@+id/sepultureFragment2"
+        android:name="com.sitcom.software.e_thanas.ui.sepultures.SepultureFragment2"
+        android:label="activity_sepulture_fragment2"
+        tools:layout="@layout/activity_sepulture_fragment2" />
 
 
 </navigation>

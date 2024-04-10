@@ -26,16 +26,12 @@ import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
-class SepultureFragment : Fragment() {
+class SepultureFragment2 : Fragment() {
 
     private lateinit var viewModel: SepultureViewModel
     private lateinit var mMap: MapView
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
     private lateinit var loadingProgressBar: ProgressBar
-
-    private lateinit var sepultureLoc: GeoPoint
-
-    private val centreFrance = GeoPoint(46.777036, 2.450763)
 
     private var coordX: Double = 0.0
     private var coordY: Double = 0.0
@@ -156,11 +152,6 @@ class SepultureFragment : Fragment() {
             onFavButtonClicked(it)
         }
 
-        val returnToSearchButton: ImageButton = view.findViewById(R.id.btnRetourSearch)
-        returnToSearchButton.setOnClickListener {
-            onReturnToSearchButtonClicked(it)
-        }
-
 
     }
 
@@ -178,12 +169,6 @@ class SepultureFragment : Fragment() {
     private fun onBackButtonClicked(view: View) {
         findNavController().popBackStack()
     }
-
-    private fun onReturnToSearchButtonClicked(view: View) {
-        findNavController().popBackStack()
-        findNavController().popBackStack()
-    }
-
 
     private fun onFavButtonClicked(it: View?) {
         // Placeholder for favorite button click handling
